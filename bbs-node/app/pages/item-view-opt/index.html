@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    {% include "../partial/header.html" %}
+    <meta name="apple-itunes-app" content="app-id=1070688103, app-argument=wacaiforum://bbs/bbsService/detail.page?tid={{ post.tid }}">
+</head>
+{% if post.downloadGuide.text %}
+<body class="pb50">
+{% else %}
+<body>
+{% endif %}
+
+<div id="js-postWrapper">
+    <div class="m-post-header">
+        <div class="m-bg rel" style="background-image: url({{ stats.bannerUrl }});">
+            <div class="bannerTitle wux-center-v">
+                <div class="desc flex wux-center-v">
+                    <div class="bbs-logo-wrap">
+                        <img class="bbs-logo responsive" src="~common/img/wacai-bbs-logo.png" />
+                    </div>
+                    <div class="sub">教你千条赚钱技巧</div>
+                </div>
+                <div class="action">
+                    <div class="js-app-open act open">
+                        <a class="openLink" href="javascript:;">打开 APP</a>
+                        <span class="arrow next"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="bannerText">
+                <div class="post__title">
+                    {{post.subject}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-profile">
+        <div class="info flex wux-center-v">
+            <a class="author flex wux-center-v" href="/app/home?uid={{ post.author.uid }}&popup=1&need_zinfo=1&navTitle=个人主页">
+                <div class="avatar" style="background-image: url({{ post.author.headImgUrl }});">
+                    {% if post.author.verifyUrl %}
+                    <i class="icon verify" style="background-image:url({{ post.author.verifyUrl }});"></i>
+                    {% endif %}
+                </div>
+                <div class="name">{{ post.author.nickName }}</div>
+            </a>
+            <a href="javascript:;" class="rText db js-app-open">
+                <span class="imgWrap">
+                    <img class="responsive" src="./img/mobile.png" />
+                </span>
+                <span>打开APP问TA</span>
+            </a>
+        </div>
+    </div>
+
+    <div id="js-post" class="m-post">
+        <div class="js-post-wrap post-wrap">
+            <div class="js-post-content post-content">{{ post.message | safe }}</div>
+        </div>
+        <div class="js-more post-more">
+            <div>
+                <span class="vm">展开全文</span>
+                <i class="icon-more bottom vm"></i>
+            </div>
+            
+        </div>
+
+        {% if post.reprint == 1 %}
+        <div class="copy-right">未经允许，禁止转载</div>
+        {% endif %}
+
+        <div class="post-actions flex-between wux-center-v">
+            <div class="post-fav-row">
+                <a href="javascript:;" class="js-zan icon-zan {{ 'isLiked' if stats.like }}"></a>
+                <div class="post-fav-lists">
+                    {% for item in likeList %}
+                    <span class="imgWrap wux-1px-radius" style="background-image:url({{ item.avatarUrl }})">
+                    </span>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="post-fav-count">
+                <div class="likesCount" v-cloak v-if="likes > 0">
+                    共<em v-text="likes">{{ stats.likes }}</em>人点赞
+                </div>
+                <div v-cloak v-else>
+                    还没有赞，快来给Ta点赞吧
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% import "../item/tpl/reply.html" as reply %}
+
+    {% if replyList.length > 0 %}
+    <div class="hot-answer">
+        {# 热门回复 #}
+        <div class="reply-sum">热门回复</div>
+        <div id="js-hot-reply" class="hot-reply reply-list">
+            {% for item in replyList %}
+            {{ reply.gen(item, 'view') }}
+            {% if not loop.last %}
+            <div class="line"></div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        
+        <div class="btnWrap">
+            <a href="javascript:;" class="btn btn-primary btn-block js-app-open">
+                {% if post.replies > 0 %}
+                打开钱堂APP 查看全部{{ post.replies }}条回复
+                {% else %}
+                打开钱堂APP 查看全部
+                {% endif %}
+            </a>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if post.tag %}
+    <div class="recommend-group">
+        <a class="weui_cell wa-tap-active db" href="/app/group?tagId={{ post.tag.id }}&popup=1&need_zinfo=1&navTitle={{ post.tag.name }}&tabType=digest">
+            <div class="weui_cell_hd">
+                <span class="imgWrap">
+                    <img src="{{ post.tag.icon }}" class="responsive">
+                </span>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <h3>{{ post.tag.name }}</h3>
+                <p class="subTitle f14 g3">
+                    <span><em>成员</em><em>{{ post.tag.subscribeCount }}</em></span>
+                    <span><em>帖子</em><em>{{ post.tag.threadCount }}</em></span>
+                </p>
+                <p class="ssubTitle f14 g3">去看看{{ post.tag.digestCount }}条精华帖</p>
+            </div>
+            <div class="weui_cell_ft arrow next"></div>
+        </a>
+    </div>
+    {% endif %}
+
+
+    {# 精彩推荐 #}
+    <div class="js-recommend-posts m-recommend-posts">
+        <div class="reply-sum">精彩推荐</div>
+        
+        <div class="r-post-lists">
+            {% for item in recommendPosts %}
+            {% if loop.index == 3 %}
+                <div id="js-recommend" class="m-recommend"></div>
+            {% endif %}
+            <a class="r-post-listItem wux-1px-b db" href="/app/thread?tid={{ item.tid }}&navTitle={{ item.title | urlencode }}">
+                <div class="r-post-top flex">
+                    <div class="r-content flex flex-column flex-between">
+                        <h3 class="g1 line-clamp-2 recommend-post-title">{{ item.title }}</h3>
+                        <p class="g3 f14 line-clamp-{{ item.lineClamp }} recommend-post-summary">{{ item.summary }}</p>
+                    </div>
+
+                    {% if item.picUrl %}
+                    <div class="r-content-wrapper">
+                        <div class="r-content-pic wux-1px" style="background-image: url({{ item.picUrl }});"></div>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="r-post-footer flex flex-between f12 g4">
+                    <div class="author flex wux-center-v">
+                        <div class="imgWrap dib">
+                            <img data-src="{{ item.headImgUrl }}" class="responsive lazy">
+                        </div>
+                        <div>{{ item.nickName }}</div>
+                    </div>
+                    <div class="social-feed">
+                        <span><em>{{ item.likeCount }}</em><em>赞</em></span>
+                        <span><em>{{ item.replyCount }}</em><em>回复</em></span>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    {# 底部下载 #}
+    <a class="m-thread-footer db js-app-open" href="javascript:;">
+        <div class="bbs">
+            <div class="logo"></div>
+            <div class="info">
+                <div class="g2 f16 slogan">越逛越有钱的理财社区</div>
+                <div class="g3 f14">39122384 位财友在这里热聊</div>
+            </div>
+            <div class="topic__lists">
+                <span class="topic btn btn-primary outlined wux-1px-radius">＃你涨工资了吗？</span>
+                <span class="topic btn btn-primary outlined wux-1px-radius">＃你有几套房？</span>
+                <span class="topic btn btn-primary outlined wux-1px-radius">＃早餐花几元？</span>
+                <span class="topic btn btn-primary outlined wux-1px-radius">＃幼儿园学费多少？</span>
+                <span class="topic btn btn-primary outlined wux-1px-radius">＃如何克服起床困难症？</span>
+                <span class="topic btn btn-primary outlined wux-1px-radius">＃免息贷款合算吗？</span>
+            </div>
+        </div>
+        <div class="download btn btn-block btn-primary">立即下载，我也有话说</div>
+    </a>
+
+    {# 底部引导栏 #}
+    {% if post.downloadGuide.text %}
+    <div class="fix__bar wux-center-v">
+        <div class="fix__bar__content flex flex-between wux-center-v">
+            <div class="content__text">钱堂｜{{ post.downloadGuide.text }}</div>
+            <a href="javascript:;" class="db btn bar__btn js-app-open">{{ post.downloadGuide.buttonText }}</a>
+        </div>
+    </div>
+    {% endif %}
+
+    <x-dialog :show.sync="showModal" :klass="klass" 
+    >
+          <div class="dialogWrapper" slot>
+            <div class="card">
+                <div class="card__header wux-1px-b">
+                    <div>更多精彩帖子</div>
+                </div>
+                <div class="card__body">
+                    <div class="card__post__lists">
+                        {% for item in post.hotPosts %}
+                        {% if not (loop.index > 3) %}
+                        <a class="postItem flex flex-column flex-between {{ 'wux-1px-b' if not(loop.last or loop.index >= 3) }}" href="/app/thread?tid={{ item.tid }}&navTitle={{ item.title }}">
+                            <div class="postItemTitle media"><span class="hot fl">HOT</span><div class="media-body">{{ item.title }}</div></div>
+                            <div class="author flex wux-center-v">
+                                <div class="imgWrap dib">
+                                    <img src="{{ item.headImgUrl }}">
+                                </div>
+                                <div class="f12 g4">{{ item.nickname }}</div>
+                            </div>
+                        </a>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="card__footer">
+                    
+                </div>
+            </div>
+            <a href="javascript:;" class="closeIcon" @click="onCancel"></a>
+          </div>
+    </x-dialog>
+
+</div>
+<script>
+    window.__INIT_DATA__ = {{ INIT_STATE | dump | safe }};
+</script>
+</body>
+</html>

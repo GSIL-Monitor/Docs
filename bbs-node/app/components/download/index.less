@@ -1,0 +1,121 @@
+// 顶部下载、打开 APP
+.m-header {
+    position: relative;
+    padding-top: percentage(118/640);
+    background: url(img/bbs-app-top.png) no-repeat center;
+    background-size: contain;
+
+    .content {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.2rem 1rem;
+    }
+
+    .desc {
+        padding-left: 14%;
+        color: #333;
+    }
+
+    .tit {
+        font-size: 1.6rem;
+    }
+
+    .sub {
+        font-size: 1.2rem;
+    }
+
+    .action {
+        display: flex;
+        align-items: center;
+    }
+
+    .act {
+        width: 7rem;
+        height: 2.4rem;
+        margin-left: .7rem;
+        font-size: 1.2rem;
+        line-height: 2.4rem;
+        text-align: center;
+        border-radius: .3rem;
+        border: 1px solid #d94b40;
+    }
+
+    .download {
+        color: #fff;
+        background-color: #d94b40;
+    }
+
+    .open {
+        color: #d94b40;
+    }
+}
+
+
+// 底部下载
+.m-download-footer {
+    position: relative;
+    padding-top: percentage(246/640);
+    background: url(img/bg-footer.png) no-repeat;
+    background-size: contain;
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .bbs {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .logo {
+        width: 3.5rem;
+        height: 3.5rem;
+        margin-right: .7rem;
+        background: url(img/wacai-bbs-logo.png) no-repeat;
+        background-size: contain;
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: #fff;
+        line-height: 1;
+
+        .tit {
+            font-size: 1.6rem;
+        }
+
+        .sub {
+            font-size: 1.2rem;
+        }
+    }
+
+
+    .download {
+        display: flex;
+        width: 7rem;
+        height: 2.4rem;
+        margin-left: auto;
+        margin-right: auto;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        border-radius: .2rem;
+        border: 1px solid #fff;
+    }
+}

@@ -1,0 +1,398 @@
+@import "~common/base/foundation";
+@import "~common/styles/v2/variable.less";
+
+body {
+    background-color: #fff;
+}
+
+// 个人信息
+.m-profile {
+    display: flex;
+    align-items: center;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    background-color: #fff;
+    padding-top: 2rem;
+
+    .info {
+        flex: 1;
+        font-size: 0;
+    }
+
+    .name {
+        display: inline-block;
+        max-width: 80%;
+        overflow: hidden;
+        color: @globalTextColor2;
+        font-size: 1.4rem;
+        line-height: 1;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .avatar {
+        position: relative;
+        float: left;
+        display: block;
+        width: 3rem;
+        height: 3rem;
+        margin-right: .7rem;
+        border-radius: 50%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+
+        > .verify {
+            position: absolute;
+            z-index: 1;
+            right: -2px;
+            bottom: -2px;
+            width: 1.3rem;
+            height: 1.3rem;
+            overflow: hidden;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+    }
+
+    .time {
+        margin-top: .6rem;
+        color: @gray;
+        font-size: 1.1rem;
+        line-height: 1;
+    }
+}
+
+.post-title {
+    padding: 2.4rem 1.6rem 0 1.6rem;
+    color: #4B4f56;
+    font-size: 2.4rem;
+    font-weight: bold;
+    line-height: 1.19;
+    background-color: #fff;
+    word-wrap: break-word;
+}
+
+// 帖子详情
+.m-post {
+    padding: 1.3rem 1.5rem;
+    padding-top: 0;
+    font-size: 1.8rem; 
+    color: #4b4f56;
+    line-height: 2.7rem;    
+    background-color: #fff;
+    .word-break();
+    overflow: hidden;
+    border-width: 0 0 1px 0;
+    .border-image();
+
+    .post-content {
+        margin-top: 1.55rem; 
+        margin-bottom: 2.4rem;
+        position: relative;
+        text-align: justify;
+    }
+
+    font {
+        font-size: inherit !important;
+    }
+
+    p {
+        font-size: inherit !important;
+        line-height: 1.588 !important;
+    }
+
+    br {
+        display: block;
+        content: '';
+        margin-bottom: 1.8rem;
+    }
+
+    img {
+        display: block;
+        margin: 1.5rem auto;  
+        max-width: 100%;
+        margin-left: 0rem;
+    }
+
+    .copy-right {
+        margin-top: 2rem;
+        color: @gray;
+        font-size: 1.4rem;
+    }
+}
+
+// 回复模块
+.m-reply {
+    padding-top: 1.6rem;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+// 回复栏
+.reply-sum {
+    padding-left: 0.7rem;
+    position: relative;
+    color: #4b4f56;
+    font-size: 1.7rem;
+    font-weight: normal;
+    line-height: 2.5rem;
+    margin-left: 1.7rem;
+    &:before{
+        content:'';
+        width: 0.4rem;
+        height: 1.2rem;
+        position: absolute;
+        background-color: @primaryColor;
+        left:0;
+        border-radius: 0.2rem;
+        top:0.65rem;
+    }
+}
+
+// 回复列表
+.reply-list {
+    .item {
+        position: relative;
+        font-size: 0;
+        padding: 1.8rem 1.6rem 1.3rem;
+    }
+
+    .item-active {
+        .message {
+            background-color: #f0f0f0;
+        }
+    }
+
+    .line {
+        margin-left: 5.8rem;
+    }
+
+    .avatar {
+        position: relative;
+        float: left;
+        width: 3rem;
+        height: 3rem;
+        margin-right: 1.2rem;
+        border-radius: 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        transition: .1s ease-out;
+
+        > .verify {
+            position: absolute;
+            z-index: 1;
+            right: -2px;
+            bottom: -2px;
+            width: 1.3rem;
+            height: 1.3rem;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+    }
+
+    .name {
+        display: inline-block;
+        max-width: 75%;
+        color: #4168b4;
+        line-height: 1.6rem;
+        font-size: 1.4rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .time {
+        margin-top: .6rem;
+        color: @gray;
+        font-size: 1.1rem;
+        line-height: 1;
+    }
+
+    .reply {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 2;
+        width: 4.5rem;
+        height: 4.5rem;
+        overflow: hidden;
+        background: url(./img/reply-new.png) no-repeat 1.65rem 1.6rem;
+        background-size: 1.35rem 1.2rem;
+    }
+
+    .content {
+        position: relative;
+        margin-left: 4.2rem;
+    }
+
+    .quote {
+        margin-top: .9rem;
+        margin-bottom: -.2rem;
+        padding: .6rem .9rem;
+        color: #b2b2b2;
+        font-size: 1.4rem;
+        border-radius: .4rem;
+        background: @bg-color;
+        .word-break();
+        line-height: 1.36;
+    }
+
+    .message {
+        position: relative;
+        margin-top: .9rem;
+        color: #666;
+        font-size: 1.5rem;
+        line-height: 1.4;
+        .word-break();
+
+        img {
+            max-width: 100%;
+        }
+
+        br {
+            display: block;
+            content: '';
+            margin-bottom: 1rem;
+        }
+
+        font,
+        strong,
+        b,
+        p {
+            font-size: inherit;
+            font-family: inherit;
+            line-height: inherit;
+            font-weight: normal;
+        }
+    }
+
+    .images {
+        display: flex;
+        align-items: center;
+        margin-left: -.3rem;
+        margin-top: .6rem;
+        margin-bottom: .3rem;
+
+        > .anchor {
+            position: relative;
+            display: block;
+            width: percentage(118/492);
+            margin-left: .3rem;
+        }
+
+        .more {
+            &:after {
+                content: '更多';
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                width: 3rem;
+                height: 1.4rem;
+                color: #fff;
+                font-size: 1rem;
+                line-height: 1.4rem;
+                text-align: center;
+                background-color: rgba(0, 0, 0, .6);
+            }
+
+            & ~ .anchor {
+                display: none;
+            }
+        }
+
+        .img {
+            width: 100%;
+            padding-top: 100%;
+            max-width: 100%;
+            background-repeat: no-repeat;
+            background-position: center 0;
+            background-size: cover;
+        }
+
+        .cover {
+            max-width: 150px;
+            max-height: 150px;
+        }
+    }
+
+    .images-count-1 {
+        .anchor {
+            width: 100%;
+        }
+    }
+
+    .load-done {
+        margin: 1rem 0;
+        text-align: center;
+    }
+}
+
+// 热门回复
+.hot-reply {
+    position: relative;
+
+    &:not(:empty) {
+        padding-bottom: 1.2rem;
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: 1.6rem;
+            right: 1.6rem;
+            bottom: .6rem;
+            border-width: 0 0 1px 0;
+            .border-image();
+        }
+
+        &:after {
+            content: '以上为热门回复';
+            position: absolute;
+            left: 0;
+            right: 0;
+            width: 35%;
+            margin: auto;
+            bottom: 0;
+            color: #cacacc;
+            font-size: 1.2rem;
+            background: #fff;
+            line-height: 1;
+            text-align: center;
+        }
+    }
+}
+
+.normal-reply {
+    .empty-reply {
+        padding-top: 1.5rem;
+        padding-bottom: 4rem;
+        color: @dark-gray;
+        font-size: 1.4rem;
+        text-align: center;
+        border-width: 0 0 1px 0;
+        .border-image();
+    }
+
+    .icon-sofa {
+        display: block;
+        width: 5rem;
+        height: 4.4rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1.2rem;
+        background-image: url(img/sofa.png?base64);
+    }
+
+    .icon-spinner {
+        padding: 1.6rem 0;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 1.6rem;
+    }
+}

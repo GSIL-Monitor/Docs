@@ -1,0 +1,235 @@
+@import "~common/base/foundation";
+@import "~common/styles/mixin";
+@import "~common/styles/1px";
+.hot-user {
+    margin: 0;
+}
+
+.m-profile {
+    display: flex;
+    align-items: center;
+    padding: 1.8rem 1.2rem 1.8rem;
+    background-color: #fff;
+    .user-info {
+        flex: 1;
+        font-size: 0;
+        overflow: hidden;
+        a{
+            display: flex;
+            align-items: center;
+        }
+        .avatar {
+            position: relative;
+            float: left;
+            display: block;
+            flex: 0 0 5.5rem;
+            height: 5.5rem;
+            margin-right: 1rem;
+            border-radius: 50%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+
+            &>.verify {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                width: 1.6rem;
+                height: 1.6rem;
+                border: 1px solid #fff;
+                border-radius: 50%;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                z-index: 2;
+            }
+        }
+        .info-block{
+            flex: 1;
+            max-width: 75%;
+            padding-right: 1rem;
+        }
+        .username {
+            display: flex;
+            align-items: center;
+            
+        }
+        .vm{
+            vertical-align: middle;
+        }
+        .name {
+            display: inline-block;
+            max-width: 60%;
+            overflow: hidden;
+            color: #333;
+            font-size: 1.6rem;
+            white-space: nowrap;
+            margin-right: .6rem;
+            text-overflow: ellipsis;
+        }
+        .tag {
+            position: relative;
+            display: block;
+            font-size: 1rem;
+            padding: 0 .3rem;
+            height: 1.5rem;
+            border:1px solid #8c8c8c;
+            color: #8c8c8c;
+            border-radius: 0.5rem;
+            max-width: 40%;
+            .text-overflow();
+        }
+        .info {
+            margin-top: .4rem;
+            color: #8c8c8c;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            span {
+                &:before {
+                    content: "";
+                    display: inline-block;
+                    width: 1rem;
+                    height: 1rem;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    margin-right: .5rem;
+                }
+            }
+            .fans {
+                &:before {
+                    background-image: url(./img/fans-icon.png?base64);
+                }
+            }
+            .post {
+                &:before {
+                    background-image: url(./img/topic-icon.png?base64);
+                }
+            }
+        }
+        .recommend-info {
+            color: #8c8c8c;
+            font-size: 1.2rem;
+            .recommend-field{
+                flex:0 0 6.2rem;
+            }
+            .recommend-value{
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+    .btn-follow {
+        flex:0 0 6rem;
+        margin-left: 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 6rem;
+        height: 2.4rem;
+        color: #d94b40;
+        font-size: 1.2rem;
+        line-height: 1;
+        border: 1px solid #d94b40;
+        border-radius: .4rem;
+        background-color: #fff;
+        &.disabled {
+            pointer-events: none;
+        }
+        &:after {
+            content: '关注';
+        }
+        > .icon-plus {
+            width: 1rem;
+            height: 1rem;
+            margin-right: .3rem;
+            background-image: url(./img/plus.png?base64);
+            background-size: contain;
+        }
+        &.followed {
+            color: #b5b9be;
+            border-color: #cfcfcf;
+            &:after {
+                content: '已关注';
+            }
+            > .icon-plus {
+                display: none;
+            }
+        }
+    }
+}
+.no-more{
+    display: none;
+    text-align: center;
+    font-size: 1.2rem;
+    color:#cacacc;
+    background: #fff;
+    height: 4rem;
+    line-height: 4rem;
+}
+.empty{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    margin-top: -11.4rem;
+    text-align: center;
+    color: #b5b9be;
+    font-size: 1.6rem;
+    height: 14rem;
+    &:before{
+        content:"";
+        display: block;
+        position: relative;
+        width: 10rem;
+        height: 10rem;
+        left: 50%;
+        margin-left: -5rem;
+        margin-bottom: 2rem;
+        background: url(./img/empty.png) no-repeat;
+        background-size: contain;
+    }
+}
+@media screen and (-webkit-device-pixel-ratio: 1){
+    .border-1-pixel{
+        &:before{
+                position: absolute;
+                left:0;
+                top:0;
+                content:"";
+                width: 100%;
+                height: 100%;
+                border:1px solid #8c8c8c;
+                border-radius: .5rem;
+                pointer-events: none;
+            }
+    }
+
+}
+@media screen and (-webkit-min-device-pixel-ratio: 2){
+    .border-1-pixel{
+        &:before{
+                position: absolute;
+                left:0;
+                top:0;
+                content:"";
+                width: 200%;
+                height: 200%;
+                border:1px solid #8c8c8c;
+                border-radius: .5rem;
+                transform-origin: 0 0;
+                transform: scale(0.5, 0.5);
+                pointer-events: none;
+            }
+    }
+
+}
+
+.icon-spinner {
+    display: block;
+    height: 1.6rem;
+    margin: 1rem 0;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}

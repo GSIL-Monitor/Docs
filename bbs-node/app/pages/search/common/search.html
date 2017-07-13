@@ -1,0 +1,86 @@
+{% if users.length > 0 %}
+<div class="m-users">
+    <h2 class="f-title">用户</h2>
+
+    <div class="js-user-list list">
+        {% if page == 'user' %}
+            {% for user in users %}
+            <a class="item" href="{{ user.homePageUrl }}&navTitle=个人主页">
+                <div class="avatar lazy" data-src="{{ user.headImgUrl }}">
+                </div>
+                <div class="info">
+                    <div class="name">{{ user.nickName | safe }}</div>
+                </div>
+            </a>
+            <div class="line"></div>
+            {% endfor %}
+        {% else %}
+            {% for user in users %}
+                {% if loop.index > 3 %}
+                {% else %}
+                <a class="item" href="{{ user.homePageUrl }}&navTitle=个人主页">
+                    <div class="avatar lazy" data-src="{{ user.headImgUrl }}">
+                    </div>
+                    <div class="info">
+                        <div class="name">{{ user.nickName | safe }}</div>
+                    </div>
+                </a>
+                <div class="line"></div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    {% if page == 'user' %}
+        {% if users.length == 15 %}
+        <a class="js-more more">加载更多<i class="icon icon-arrow"></i></a>
+        {% endif %}
+    {% else %}
+        {% if users.length > 3 %}
+        <a class="more" href="/app/search/user?keyword={{ keyword }}&popup=1&navTitle=搜索">查看全部<i class="icon icon-arrow"></i></a>
+        {% endif %}
+    {% endif %}
+</div>
+{% endif %}
+
+{% if posts.length > 0 %}
+<div class="m-posts">
+    <h2 class="f-title">帖子</h2>
+
+    <div class="js-post-list list">
+        {% if page == 'post' %}
+            {% for post in posts %}
+            <a class="item" href="{{ post.postUrl }}&navTitle=帖子详情">
+                <div class="title">{{ post.subject | safe }}</div>
+                <div class="content">{{ post.message | safe }}</div>
+                <div class="replies-likes"><span>回复 {{ post.replies}}</span><span>赞 {{ post.likes}}</span></div>
+            </a>
+            <div class="line"></div>
+            {% endfor %}
+        {% else %}
+            {% for post in posts %}
+                {% if loop.index > 3 %}
+                {% else %}
+                <a class="item" href="{{ post.postUrl }}&navTitle=帖子详情">
+                    <div class="title">{{ post.subject | safe }}</div>
+                    <div class="content">{{ post.message | safe }}</div>
+                    <div class="replies-likes"><span>回复 {{ post.replies}}</span><span>赞 {{ post.likes}}</span></div>
+                </a>
+                <div class="line"></div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    {% if page == 'post' %}
+        {% if posts.length == 15 %}
+        <a class="js-more more">加载更多<i class="icon icon-arrow"></i></a>
+        {% endif %}
+    {% else %}
+        {% if posts.length > 3 %}
+        <a class="more" href="/app/search/post?keyword={{ keyword }}&popup=1&navTitle=搜索">查看全部<i class="icon icon-arrow"></i></a>
+        {% endif %}
+    {% endif %}
+
+</div>
+{% endif %}

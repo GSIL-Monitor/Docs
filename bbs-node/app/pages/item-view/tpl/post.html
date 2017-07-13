@@ -1,0 +1,17 @@
+<div class="posts">
+    {% for item in posts %}
+        <a href="/m/thread?tid={{ item.tid }}&popup=1&need_zinfo=1&navTitle=帖子详情">
+            <div class="item">
+                <div class="cover lazy" data-src="{{ item.picUrl }}"></div>
+                <div class="info">
+                    <div class="title">{{ item.title }}</div>
+                    <div class="name">{{ item.nickName }}</div>
+                </div>
+            </div>
+            {% if not loop.last %}
+            <div class="line"></div>
+            {% endif %}
+        </a>
+    {% endfor %}
+</div>
+<div class="line"></div>

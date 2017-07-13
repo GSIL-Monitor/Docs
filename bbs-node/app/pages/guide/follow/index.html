@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    {% set pageTitle = '关注几个好友' %}
+    {% include "../../partial/header.html" %}
+</head>
+<body>
+<!--<div class="m-header">
+    <a href="wacai://close" class="js-close close"></a>
+    <h1 class="title">关注几个好友</h1>
+    <h2 class="sub">及时接收好友新鲜事</h2>
+</div>-->
+
+<div class="m-users">
+    {% for user in official %}
+    <div class="item">
+        <div class="avatar" style="background-image: url({{ user.avatarUrl }});">
+            <div class="verify verify-{{ user.verify }}"></div>
+        </div>
+        <div class="content">
+            <div class="name">{{ user.userName }}</div>
+            <div class="desc">{{ user.desc }}</div>
+        </div>
+        <div class="js-follow btn-follow followed"
+             data-uid="{{ user.uid }}">
+            <i class="icon-plus"></i>
+        </div>
+    </div>
+    {% endfor %}
+    {% for user in users %}
+        <div class="item">
+            <div class="avatar" style="background-image: url({{ user.avatarUrl }});">
+                <div class="verify" style="background-image: url({{ user.verifyUrl }});"></div>
+            </div>
+            <div class="content">
+                <div class="name"><span>{{ user.username }}</span></div>
+                <div class="desc">{{ user.lastThread}}</div>
+            </div>
+            <div class="js-follow btn-follow followed"
+                 data-uid="{{ user.uid }}">
+                <i class="icon-plus"></i>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="js-next m-next">
+    <div class="js-btn btn">开始逛社区</div>
+</div>
+</body>
+</html>

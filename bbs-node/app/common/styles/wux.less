@@ -1,0 +1,88 @@
+[v-cloak]{
+	display: none;
+}
+
+.weui_cell_box.weui_cell {
+  padding:0;
+}
+
+.weui_cell_ft [slot=value]{
+  display: inline-block;
+}
+
+.weui_cell_ft.with_arrow:after{
+  content: " ";
+  display: inline-block;
+  transform: rotate(45deg);
+  height: 8px;
+  width: 8px;
+  border-width: 2px 2px 0 0;
+  border-color: @globalArrowColor;
+  border-style: solid;
+  position: relative;
+  top: -1px;
+  margin-left: .3em;
+}
+
+.wux-center-v, .wux-center-h, .wux-center {
+  display: flex;
+}
+
+.wux-center-v, .wux-center {
+  align-items: center;
+}
+
+.wux-center-h, .wux-center {
+  justify-content: center;
+}
+
+.weui_cells_checkbox > label > * {
+  pointer-events: none;
+}
+
+.weui_cells_radio .weui_cell_hd {
+    padding-right: 0.35em;
+}
+
+.weui_check {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+    background-color: #fff;
+    border-radius: 100%;
+    border: 1px solid #ccc;
+    position: relative;
+    left : auto;
+    top : -2px;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+.weui_check:after {
+    border: 2px solid transparent;
+    border-left: 0;
+    border-top: 0;
+    content: " ";
+    top: 3px;
+    left: 6px;
+    position: absolute;
+    width: 4px;
+    height: 8px;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg)
+}
+
+.weui_check:checked:after {
+    border-color: #fff
+}
+
+.weui_check[disabled] {
+    background-color: #d9d9d9;
+    border-color: #ccc
+}
+.weui_cells_checkbox.is-limit .weui_check:not(:checked) {
+    background-color: #d9d9d9;
+    border-color: #d9d9d9;
+}

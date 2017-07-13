@@ -1,0 +1,14 @@
+{% for item in items %}
+<a href="/m/profile?popup=1&need_info=1&uid={{ item.uid }}&navTitle=个人主页">
+    <div class="item">
+        <div class="rank {{ 'rank-' + loop.index if loop.index < 4 }}">{{ item.rankingText }}</div>
+        <div class="avatar lazy" data-src="{{ item.headImgUrl }}"></div>
+        <div class="nick">{{ item.nickName }}</div>
+        <div class="text">连续签到&nbsp;{{ item.continueSignDay }}&nbsp;天</div>
+    </div>
+
+    {% if not loop.last %}
+    <div class="line"></div>
+    {% endif %}
+</a>
+{% endfor %}

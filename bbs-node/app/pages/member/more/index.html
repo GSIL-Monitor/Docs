@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    {% set pageTitle = '更多' %}
+    {% include "../../partial/header.html" %}
+</head>
+<body>
+<input name="uid" type="hidden" value="{{ uid }}">
+<div class="m-profile">
+    <a data-stat="more_userinfo" href="/m/profile?uid={{ uid }}&popup=1&need_login=1&navTitle=个人主页">
+        <div class="user">
+            <span class="avatar {{ 'default' if not uid }}" style="background-image: url({{ headImgUrl }});">
+                {% if verifyUrl %}
+                <i class="icon verify" style="background-image:url({{ verifyUrl }});"></i>
+                {% endif %}
+            </span>
+            <em class="name">{{ nickName or '未登录' }}</em>
+            <i class="icon icon-arrow"></i>
+        </div>
+    </a>
+    <div class="stats">
+        <a data-stat="more_threads" class="item" href="/home.php?mod=space&view=me&do=thread&popup=1&need_login=1&navTitle=我的主题">
+            <em>{{ taolunCount | default(0) }}</em>讨论
+        </a>
+        <a data-stat="more_follow" class="item" href="/app/follow?follow=1&popup=1&need_login=1&uid={{ uid }}&navTitle=粉丝和关注">
+            <em>{{ followCount | default(0) }}</em>关注
+        </a>
+        <a data-stat="more_follower" class="item" href="/app/follow?fans=1&popup=1&need_login=1&uid={{ uid }}&navTitle=粉丝和关注">
+            <em>{{ fansCount | default(0) }}</em>粉丝
+        </a>
+    </div>
+</div>
+
+<div class="m-menu">
+    <a href="/app/member/sign?wacaiClientNav={{ hideH5Bar }}&popup=1&navTitle=已连续签到">
+        <div class="item">
+            <i class="icon icon-sign"></i>
+            <em class="title">每日签到</em>
+            <span class="text">
+                {% if isSign %}
+                连续签到 {{ signCount }} 天
+                {% else %}
+                未签到
+                {% endif %}
+            </span>
+            <i class="icon icon-arrow"></i>
+        </div>
+        <div class="line"></div>
+    </a>
+    <a href="/app/message/?need_login=1&popup=1&navTitle=消息">
+        <div class="item">
+            <i class="icon icon-message"></i>
+            <em class="title">消息提醒</em>
+            {% if msgCount and msgCount != '0' %}
+            <span class="icon count count-{{ msgCount | length }}">{{ msgCount }}</span>
+            {% endif %}
+            <i class="icon icon-arrow"></i>
+        </div>
+        <div class="line"></div>
+    </a>
+    <a data-stat="more_mycollect" href="/home.php?do=favorite&view=me&type=thread&mod=space&need_login=1&popup=1&navTitle=我的收藏">
+        <div class="item">
+            <i class="icon icon-star"></i>
+            <em class="title">我的收藏</em>
+            <i class="icon icon-arrow"></i>
+        </div>
+        <div class="line"></div>
+    </a>
+    <a href="/home.php?do=follower&filter=new&type=4&mod=follow&popup=1&navTitle=挖财会客厅">
+        <div class="item">
+            <i class="icon icon-meeting"></i>
+            <em class="title">挖财会客厅</em>
+            <i class="icon icon-arrow"></i>
+        </div>
+    </a>
+
+</div>
+
+<div class="m-menu">
+    <a href="/forum.php?action=1&popup=1&navTitle=全部版块">
+        <div class="item">
+            <i class="icon icon-block"></i>
+            <em class="title">全部版块</em>
+            <i class="icon icon-arrow"></i>
+        </div>
+        <div class="line"></div>
+    </a>
+    <a href="/m/member/jishi?popup=1&need_login=1&navTitle=社区集市">
+        <div class="item">
+            <i class="icon icon-charge"></i>
+            <em class="title">集市兑换</em>
+            <span class="text">{{ copperCount | default(0) }} 铜钱</span>
+            <i class="icon icon-arrow"></i>
+        </div>
+        <div class="line"></div>
+    </a>
+    <a href="/app/guide/label?popup=1&need_login=1&navTitle=选择兴趣版块">
+        <div class="item">
+            <i class="icon icon-fav"></i>
+            <em class="title">我的兴趣版块</em>
+            <i class="icon icon-arrow"></i>
+        </div>
+
+    </a>
+</div>
+</body>
+</html>

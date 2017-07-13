@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    {% set pageTitle = '选择兴趣版块' %}
+    {% include "../../partial/header.html" %}
+</head>
+<body>
+<!--<div class="m-header">
+    <a href="wacai://close" class="js-close close"></a>
+    <h1 class="title">选择兴趣版块</h1>
+    <h2 class="sub">为您推荐更多精准内容</h2>
+    <a href="/app/guide/follow/?need_zinfo=1" class="js-skip skip">跳过</a>
+</div>-->
+<div class="m-block">
+    {% set count = 0 %}
+    {% for label in labels %}
+    <div class="cat">
+        <div class="label">{{ label.label }}&nbsp;|&nbsp;{{ label.desc }}</div>
+        {% for row in label.list %}
+        <div class="row">
+            {% for tag in row %}
+            {% set count = count + 1 %}
+            <div data-fid="{{ tag.fid }}"
+                 class="js-block block block-{{ count }} {{ 'checked' if tag.checked }}">
+                <div class="text">{{ tag.tag }}</div>
+                <div class="hook"></div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+<div class="js-next m-next">
+    <div class="js-btn btn">下一步</div>
+</div>
+</body>
+</html>

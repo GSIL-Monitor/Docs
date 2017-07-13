@@ -1,0 +1,17 @@
+{% for item in items %}
+<div class="js-reply item" data-reply-url="{{ item.replyUrl}}">
+    <a class="avatar lazy" data-src="{{ item.fromUserHead }}" href="/m/profile?need_zinfo=1&popup=1&uid={{ item.fromUserId }}&navTitle=个人主页">
+    </a>
+    <div class="content">
+        <h3 class="title">
+            <a class="name" href="/m/profile?need_zinfo=1&popup=1&uid={{ item.fromUserId }}&navTitle=个人主页">
+                {{ item.fromUserNick }}
+            </a>赞了你
+            <span class="date">{{ item.time }}</span>
+        </h3>
+        <p class="message">
+            <a class="text" href="{{ item.postUrl }}">{{ item.subject }}</a>
+        </p>
+    </div>
+</div>
+{% endfor %}

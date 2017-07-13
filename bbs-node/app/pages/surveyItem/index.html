@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    {% include "../partial/header.html" %}
+    
+</head>
+<body>
+     <div class="content">
+     	<div class="card">
+     		{% if surveyOption.type == 1 %}
+					<div class="weui_cells weui_cells_radio">
+					{% for option in surveyOption.options %}
+					  <label class="weui_cell weui_check_label {% if option.selected  %} active {% endif %}" >
+					    <div class="weui_cell_bd weui_cell_primary">
+					      <p>{{ option.content }}</p>
+					    </div>
+					    <div class="weui_cell_ft">
+					    	<span>
+					        <input type="radio" class="weui_check" 
+					        name="radio_type_{{ surveyOption.type }}" 
+					        data-type="{{ surveyOption.type }}"
+					        value="{{ option.id }}" 
+					        id="radio_id_{{ option.id }}"
+					        {% if option.selected  %} checked {% endif %}
+							required
+					        >
+					      </span>
+					    </div>
+					  </label>
+					  {% endfor %}
+					</div>
+					{% elif surveyOption.type == 2 %}
+						<div class="weui_cells weui_cells_checkbox">
+							{% for option in surveyOption.options %}
+							<label class="weui_cell weui_check_label {% if option.selected  %} active {% endif %}">
+								<div class="weui_cell_bd weui_cell_primary">
+									<p>{{ option.content }}</p>
+								</div>
+								<div class="weui_cell_ft">
+									<span><input type="checkbox"
+									class="weui_check" value="{{ option.id }}"
+									data-type="{{ surveyOption.type }}"  
+									name="check_type_{{ surveyOption.type }}"
+								 	id="checkbox_id_{{option.id}}" 
+								 	{% if option.selected  %} checked {% endif %}
+								 	required></span>
+								</div>
+							</label>
+							{% endfor %}
+						</div>
+					{% endif %}					
+     	</div>
+     </div>
+    <script type="text/javascript">
+	window.INIT_DATA = {{ surveyOption | dump | safe }}
+	</script>
+</body>
+</html>

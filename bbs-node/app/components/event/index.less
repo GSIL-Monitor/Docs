@@ -1,0 +1,123 @@
+.wobble {
+  animation-name: wobble;
+}
+
+@keyframes wobble {
+  0% {
+    transform: none;
+  }
+  75% {
+    transform: none;
+  }
+  78.75%{
+	transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+  }
+
+  82.75%{
+    transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+  }
+
+  86.25%{
+    transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+  }
+
+  90%{
+    transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+  }
+
+  93.75%{
+    transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+  }
+
+  100%{
+    transform: none;
+  }
+}
+
+.animated {
+  animation-duration: 8s;
+  animation-fill-mode: both;
+}
+.animated.infinite {
+  animation-iteration-count: 1;
+}
+
+.packet{
+	display: block;
+	position: fixed;
+	bottom:60px;
+	right:-24px;
+	transition:transform ease 0.4s;
+	transform: translateX(100%);
+	&.show{
+		transform: translateX(0);
+	}
+	.packetPic{
+    position: relative;
+		width: 115px;
+		height: 45px;
+		display: inline-block;
+    margin-right: 10px;
+		background-position: left top;
+    background-repeat: no-repeat;
+		background-size: 100px 45px;
+
+	}
+	.close{
+		display: inline-block;
+		position: absolute;
+		top: -7px;
+		right: 25px;
+		width: 15px;
+		height: 15px;
+		background:url(./img/iClose5.png) left top no-repeat;
+		background-size: 15px 15px;
+	}
+}
+
+.winter-lottery{
+  position: fixed;
+  width: 6.7rem;
+  height: 7rem;
+  background: url(./img/new-year-img.png) no-repeat;
+  background-size: contain;
+  right: -1.5rem;
+  bottom: 5rem;
+  z-index: 99;
+  transition: all 1s;
+  transform-origin: 70.3% 28%;
+  transform: rotate(-50deg);
+  &.show{
+    right: 0;
+    transform: rotate(0deg);
+    animation: shake 1s infinite linear;
+  }
+  &.hide{
+    display: none;
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  90% {
+    transform: translateX(-5px);
+  }
+  80% {
+    transform: translateX(-10px);
+  }
+}
+
+// 温泉活动
+.spring{
+  right: 0;
+  z-index: 99;
+  .packetPic{
+    display: inline-block;
+    width: 75px;
+    height: 75px;
+    background:url(./img/spring.png) left top no-repeat;
+    background-size: 75px 75px;
+  }
+}

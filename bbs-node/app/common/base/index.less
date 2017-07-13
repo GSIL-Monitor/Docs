@@ -1,0 +1,112 @@
+@import "foundation";
+
+body {
+    color: #666;
+    font-size: 1.2rem;
+    line-height: 1.45;
+    background-color: #f6f6f6;
+    font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+    text-size-adjust: 100% !important; 
+}
+
+i, em {
+    font-style: normal;
+}
+
+a {
+    color: #0297ff;
+
+    &:active {
+        color: lighten(#0297ff, 10%);
+    }
+}
+
+.hide {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}
+
+.hidden,
+[hidden] {
+    position: absolute !important;
+    visibility: hidden !important;
+}
+
+.visible {
+    visibility: visible;
+}
+
+[disabled] {
+    pointer-events: none;
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 0;
+    text-align: center;
+    font-size: 1.3rem;
+
+    > .icon {
+        width: 1.6rem;
+        height: 1.6rem;
+        margin-right: .4rem;
+    }
+}
+
+.border-hack() {
+    position: relative;
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
+
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+
+    }
+}
+
+.border-hack {
+
+}
+
+.line {
+    border-width: 0 0 1px 0;
+    .border-image();
+}
+
+.icon-arrow {
+    display: block;
+    width: .7rem;
+    height: 1.2rem;
+}
+
+.m-no-more {
+    padding: 1.2rem 0;
+    color: #cacacc;
+    text-align: center;
+}
+
+.avatar {
+    .border-pixel;
+    border-width: 1px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../img/avatar.png?base64);
+
+    @media (-webkit-min-device-pixel-ratio: 2) {
+        &:before {
+            border-width: 1px;
+            border-radius: 50%;
+        }
+    }
+}
+
+.avatar-big {
+    background-image: url(../img/avatar-big.png?base64);
+}
+

@@ -1,0 +1,43 @@
+@import "~common/base/foundation";
+
+.m-report-title {
+    padding: 1.6rem;
+    padding-bottom: .8rem;
+    color: @dark-gray;
+    font-size: 1.3rem;
+    line-height: 1;
+}
+
+.m-reasons {
+    padding-left: 1.6rem;
+    border-width: 0 0 1px 0;
+    .border-image();
+    background-color: #fff;
+
+    .icon-arrow {
+        display: block;
+        width: 1.4rem;
+        height: 1rem;
+        visibility: hidden;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url(img/check.png?base64);
+        background-size: contain;
+    }
+
+    .reason {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-right: 1.6rem;
+        color: #333;
+        font-size: 1.5rem;
+        line-height: 4.3rem;
+
+        &.selected {
+            .icon-arrow {
+                visibility: visible;
+            }
+        }
+    }
+}

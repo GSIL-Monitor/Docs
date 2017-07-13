@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    {% set pageTitle = '钱堂' %}
+    {% include "../partial/header.html" %}
+</head>
+<body>
+{% if banners and banners.length>0 %}
+    <div class="r-banners bg-white">
+        <div class="banners-container">
+            <div class="swiper-wrapper">
+                {% for banner in banners %}
+                    <div class="swiper-slide">
+                        <a data-stat="tj_banner_{{ loop.index }}" href="{{ banner.url }}">
+                            {% if loop.index == 1 %}
+                                <img src="{{ banner.iconUrl }}">
+                            {% else %}
+                                <img data-src="{{ banner.iconUrl }}" class="swiper-lazy">
+                            {% endif %}
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+{% endif %}
+
+<div class="misc-data" id="J_miscData">
+    <a href="/app/message?popup=1" class="main">
+    </a>
+</div>
+{% if topics and topics.length>0 %}
+    <div class="r-topics bg-white">
+        <div class="r-box-title">
+            <span class="title">大家都在说</span>
+            <span class="more"><a data-stat="tj_topic_more" href="/app/recommend/topics?popup=1&navTitle=大家都在说">更多</a></span>
+            <i class="right-icon"></i>
+        </div>
+        <div class="r-scroll-box">
+            {% for topic in topics %}
+                <a data-stat="tj_topic_{{ loop.index }}" href="{{ topic.url }}&navTitle=帖子详情" class="topic" style="background-image: url({{ topic.backgroundUrl }});">
+                    <span>{{ topic.title }}</span>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="line"></div>
+{% endif %}
+
+{# 临时禁用此功能 #}
+{% if false %}
+    <div class="new-message">
+        <a class="js-new-message" href="/m/feed?popup=1&need_zinfo=1">
+            <i class="avatar"></i>
+            <div class="new-message-label">神秘的财友在说话</div>
+            <i class="right-icon"></i>
+        </a>
+        <div class="line"></div>
+    </div>
+{% endif %}
+
+{% import "./tpl/post.html" as post %}
+<div id="js-normal-recommend">
+    {% for item in recommendList %}
+        {% if loop.index==5 %}
+            {% if sdk and (sdk.open == 1) %}
+            <div>
+                {% include "./tpl/sdk.html" %}
+            </div>
+            {% endif %}
+        {% endif %}
+
+        {% if (loop.index==6 and biRecommends.length) or (loop.index==7 and biRecommends.length==0) %}
+            {% if hotUsers and hotUsers.length %}
+                <div class="r-users-bos">
+                    <div class="r-box-title">
+                        <span class="title">活跃财友</span>
+                        <span class="more"><a data-stat="tj_member_more" href="/app/hotusers?popup=1&need_zinfo=1&navTitle=活跃财友">更多</a></span>
+                        <i class="right-icon"></i>
+                    </div>
+                    <div class="r-scroll-box">
+                        {% for user in hotUsers %}
+                            <div class="r-user border-1-pixel">
+                                <a href="/m/profile?uid={{ user.uid }}&popup=1&need_zinfo=1&navTitle=个人主页"
+                                   class="user-link">
+                                    <div class="avatar lazy" data-src="{{ user.avatarUrl }}">
+                                        {% if user.verifyUrl %}
+                                            <i class="icon verify"
+                                               style="background-image: url({{ user.verifyUrl }});"></i>
+                                        {% endif %}
+                                    </div>
+                                    <div class="user-name">{{ user.username }}</div>
+                                    <div class="user-label">{{ user.tag }}</div>
+                                </a>
+                                <a data-stat="tj_member_follow" href="javascript:void(0)" data-uid="{{ user.uid }}"
+                                   class="user-follow-btn js-follow">
+                                    <i class="icon-plus"></i>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
+
+        <!-- {% if loop.index==9 and biRecommends[1] %}
+            {{ post.gen(biRecommends[1],'personal') }}
+            <div class="line"></div>
+        {% endif %} -->
+
+        {% if (loop.index==9 and biRecommends.length) or (loop.index==10 and biRecommends.length==0) %}
+            
+        {% endif %}
+
+        {{ post.gen(item) }}
+        {% if not loop.last %}
+            <div class="line"></div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+
+<script>
+    window.__INIT_DATA__ = {{ INIT_STATE | dump | safe }}
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    {% set pageTitle = '编辑昵称' %}
+    {% include "../../partial/header.html" %}
+</head>
+<body>
+<form class="js-form m-form">
+    <input class="js-nickname nickname" id="nickname" type="text" autocomplete="off" placeholder="取个中文名吧" value="{{ userName or username }}">
+    <label class="js-tip label" for="nickname">60天内仅支持修改一次昵称，仅支持中英文、数字、下划线，4-20 个字符</label>
+    <div class="js-error label error"></div>
+    <div class="action">
+        <button type="submit" class="js-btn btn-submit">确认</button>
+    </div>
+</form>
+</body>
+</html>

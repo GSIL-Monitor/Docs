@@ -1,0 +1,120 @@
+html {
+  font-size: @globalFontSize;
+}
+
+body {
+    font-family: @globalFont;
+    background-color: @globalBackgroundColor;
+    padding-bottom: 40px;
+    text-size-adjust: 100%;
+}
+
+img.responsive{
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+}
+.flex{display: flex;}
+.flex-full{width:100%;}
+.flex-between{justify-content: space-between;}
+.flex-column{flex-direction:column;}
+
+a {
+  color: @globalLinkColor;
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+a:active {
+  color: @globalLinkActiveColor;
+}
+.page {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: @globalBackgroundColor;
+  z-index: 2;
+}
+
+.container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.bar {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  height: 4.4rem;
+  background-color: #fff;
+  backface-visibility: hidden;
+}
+.bar-nav ~ .content {
+  top: 4.4rem;
+}
+.content-padded {
+  margin: 1rem;
+}
+.text-center {
+  text-align: center;
+}
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
+
+.tabs .tab {
+  display: none;
+}
+.tabs .tab.active {
+  display: block;
+}
+.wux-divider {
+    height: 1px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    margin-top: 18px;
+    margin-bottom: 18px;
+    font-size: 16px;
+    line-height: 1;
+    color: #777
+}
+
+.wux-divider span {
+    position: relative;
+    top: -8px;
+    background-color: #fbf9fe;
+    padding: 0 20px
+}
+
+.f1{
+  flex:1;
+}
+
+.flex-start{
+  justify-content:flex-start;
+}
+
+.flex-end{
+  justify-content:flex-end;
+}
+
+

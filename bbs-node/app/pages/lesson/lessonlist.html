@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% set pageTitle = data.name %}
+    {% include "../partial/header.html" %}
+</head>
+<body>
+	<!--对应分类推荐的课程开始-->
+    <div class="list-container bg-white" id="lessons-container">
+				{% if data.lessonList and data.lessonList.length>0  %}
+			    	{% for les in data.lessonList %}
+					<a href="{{les.url}}" class="lessonListItem">
+							<div class="r-lesson-content">
+							    <div class="content">
+							        <div class=" line-clamp-{{les.lineClamp}} lesson-title">{{les.title}}</div>
+							        <div class="lesson-level">{{les.tag}}<i class="level-l"></i>
+                                <i class="level-r"></i></div>
+							    </div>
+							    <div class="image">
+							    	<div class="cover lazy" data-src="{{les.picUrl}}"></div>
+							    </div>
+							</div>
+					</a>
+					<div class="line"></div>
+					{% endfor %}
+				{% endif %}
+    </div>	
+	<!--对应分类推荐的课程结束-->
+<script>
+    window.__INIT_DATA__ = {{ INIT_STATE | dump | safe }}
+</script>
+</body>
+
+</html>

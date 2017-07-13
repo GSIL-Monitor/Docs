@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    {% set pageTitle = '搜索' %}
+    {% include "../../partial/header.html" %}
+</head>
+<body>
+<form class="js-search-form m-search-form">
+    <label class="label">
+        <i class="icon icon-search"></i>
+        <i class="js-close icon icon-close"></i>
+        <input class="js-search-input search-input" type="search" placeholder="搜索帖子或用户" autocomplete="off">
+        {# fix form submit search key #}
+        <button hidden></button>
+    </label>
+    <a href="wacai://close" class="cancel">取消</a>
+</form>
+
+<div class="js-search-result m-search-result"></div>
+<div class="js-popup-history m-popup-history">
+    {% include "../common/history.html" %}
+</div>
+<div class="js-not-found">
+        <img src="../img/not-found.png" alt="没有搜到结果">
+        <div class="not-found-text">没有搜到结果</div>
+</div>
+    
+    <script type="text/javascript">
+        window.__INIT_DATA__ = {{ INIT_STATE | dump | safe }}
+    </script>
+
+</body>
+</html>

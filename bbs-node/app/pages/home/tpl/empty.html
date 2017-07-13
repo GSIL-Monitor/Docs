@@ -1,0 +1,15 @@
+{% macro gen(item) %}
+<div class="emptyView">
+    <span class="imageWrap">
+        <img src="../image/empty.png" class="responsive">
+    </span>
+    <div class="emptyTxt">爱分享的人更富有</div>
+	
+	{% if item.myPage %}
+	<div class="btnRow">
+		<a href="javascript:;" class="btn btn-primary round" id="js-new-post">去发帖</a>
+	</div>
+	{% endif %}
+
+</div>
+{% endmacro %}

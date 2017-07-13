@@ -1,0 +1,11 @@
+{% if type == 'loading' %}
+<div class="m-empty">
+    <i class="icon icon-loading"></i>
+    <p class="icon-spinner">努力加载中，请稍候...</p>
+</div>
+{% else %}
+<div class="m-empty">
+    <i class="icon icon-{{ type | default('error') }}"></i>
+    <p>{{ error | default('sorry，暂时无法连接') }}</p>
+</div>
+{% endif %}

@@ -1,0 +1,273 @@
+@import "~common/styles/index";
+@import "~common/styles/v2/variable";
+@import "~common/styles/v2/index";
+@import "~common/styles/1px";
+@import "~components/weui/weui_patch.less";
+
+
+body{
+	padding-bottom: 0;
+}
+.ReactModal__Overlay{
+	z-index: 5;
+}
+
+.customNav.wux-header{
+	background-color: #FE5E68;
+	height: 44px;
+	position: fixed;
+	z-index: 9;
+	.title{
+		color: #fff;
+		font-weight: 500;
+	}
+	.wux-header-left{
+		&:before{
+			border-color: #fff;
+		}
+	}
+	/** 重写nav右侧的样式 */
+	.wux-header-more {
+		/** 垂直居中 */
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+		/** 图片 */
+		background: url(./image/rule.png) no-repeat;
+		background-size: cover;
+		width: 2rem;
+		height: 2rem;
+		/** 隐藏content */
+		&:before {
+			display: none;
+		}
+	}
+	border-bottom-color: #FE5E68;
+}
+
+.wingBlank{
+	padding-left: 1.6rem;
+	padding-right: 1.6rem;
+}
+
+.signer{
+	padding-bottom: 1.6rem;
+}
+
+.counter{
+	padding-top: 64px;
+	padding-bottom: 32px;
+	background-image: linear-gradient(top, #fe5e68 0%,#fe5e68 21%,#ff7b6e 100%);
+	background-repeat: no-repeat;
+	position: relative;
+	.backbg{
+		position: absolute;
+		height:5.5rem;
+		bottom:0;
+		left:0;
+		right:0;
+		background: url(./image/wave.png) center bottom repeat-x;
+		background-size: 37.5rem 5.5rem;
+	}
+	.sign__info{
+		padding-top: 2rem;
+		text-align: center;
+		color:#fff;
+		.copper{
+			font-size: 1.3rem;
+			line-height: 1;
+			.copper-item{
+				display: inline-block;
+				padding-left: 1.6rem;
+				padding-right: 1.6rem;
+				&:first-child{
+					border-right: 1px solid #fff;
+				}
+			}
+		}
+		.sign__Button{
+			display: inline-block;
+			margin-top: 3.6rem;
+			width: 76.8%;
+			border-radius: 2.2rem;
+			font-size: 1.7rem;
+			color: @primaryColor;
+			background-color: #fff;
+			text-align: center;
+			line-height: 4.4rem;
+			max-width: 28.8rem;
+			position: relative;
+			z-index: 1;
+			&.disabled{
+				background-color: rgba(255,255,255,0.3);
+				color:#fff;
+			}
+		}
+		.copperHighLight{
+			color: #FCD872;
+		}
+	}
+}
+
+.link__items{
+	margin-bottom: 1rem;
+	background-color: #fff;
+	font-size: 1.2rem;
+	color: @globalTextColor2;
+	padding-top: 1.6rem;
+	padding-bottom: 1.2rem;
+	.link__item{
+		flex-direction:column;
+		text-align: center;
+		a{
+			color: inherit;
+			text-align: center;
+		}
+	}
+	img{
+		display: inline-block;
+		width: 4rem;
+		height: 4rem;
+		margin-bottom: 0.8rem;
+	}
+}
+
+.newBieGift{
+	.media{
+		font-size: 1.4rem;
+		flex:1;
+	}
+	.primary{
+		color: @primaryColor;
+	}
+	.media-title{
+		font-size: 1.8rem;
+		font-weight: 600;
+		margin-bottom: 0.4rem;
+		em{
+			color: @primaryColor;
+			display: inline-block;
+			font-size: 2.2rem;
+			position: relative;
+			top:0.1rem;
+			padding-left: 2px;
+			padding-right: 2px;
+		}
+	}
+	.media-button{
+		width:7.6rem;
+		display: inline-block;
+		font-size: 1.4rem;
+		text-align: center;
+		line-height: 2.8rem;
+		border-radius: 1.4rem;
+		background-color: @primaryColor;
+		color: #fff;
+		&.disabled{
+			background-color: #F2F2F3;
+			color: @globalTextColor3;
+		}
+	}
+	.weui_panel_bd{
+		padding-top:1.4rem;
+		padding-bottom: 1.4rem;
+	}
+}
+
+.dailyTask{
+	.no_group_title{
+		margin-top: 0;
+		&:before{
+			border-top: none;
+		}
+		.weui_cell{
+			font-size: 1.3rem;
+			color:@globalTextColor3;
+			padding-top: 1rem;
+			padding-bottom: 1rem;
+			.weui_cell_primary{
+				min-width: 0;
+				font-size: 1.6rem;
+				color: @globalTextColor1;
+				padding-right: 1rem;
+				p{
+					.ellipsis();
+				}
+			}
+			.with_arrow{
+				.span{
+					color: @primaryColor;
+					font-size: 1.3rem;
+				}
+				&:after{
+					border-color: @primaryColor;
+				}
+			}
+		}
+	}
+}
+
+.dialogWrapper{
+	.closeIcon{
+		margin-top: 2.8rem;
+		width: 4rem;
+		height: 4rem;
+		display: inline-block;
+		.cross(#fff, #fff);
+	}
+}
+
+.signModal{
+	text-align: center;
+	&.weui_dialog{
+		background-color:transparent;
+		border-radius: 0;
+	}
+	.sign__card{
+		background-color: #fff;
+		border-radius: 1rem;
+		padding: 2.8rem 10%;
+		h4{
+			font-size: 2rem;
+			margin-bottom: 1.3rem;
+		}
+		.giftWrapper{
+			display: inline-block;
+			width: 8.4rem;
+			height: 6.8rem;
+			margin-bottom: 4rem;
+		}
+		.btn-block{
+			font-size: 1.6rem;
+			padding-top: 1rem;
+			padding-bottom: 1rem;
+			line-height: 1.5;
+			border-radius: 2.2rem;
+			margin-top: 2.4rem;
+			margin-bottom: 0;
+		}
+	}
+}
+
+.sign__copper{
+	color: @primaryColor;
+	font-size: 2.4rem;
+	position: relative;
+	top:0.1rem;
+}
+
+.wux-label-desc{
+	font-size: 1.3rem;
+	color: @globalTextColor3;
+	display: inline-block;
+	margin-top: 4px;
+}
+
+.weui_panel_hd{
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+.copper_desc{
+	font-weight: 300;
+}

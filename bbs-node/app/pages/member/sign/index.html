@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    {% set pageTitle = '每日签到' %}
+    {% include "../../partial/header.html" %}
+</head>
+<body>
+<div class="m-profile">
+    <div class="avatar" style="background-image: url({{ headImgUrl }});"></div>
+    <div class="content">
+        <strong class="js-next-sign {{ 'hide' if not isSign }}">
+            连续签到&nbsp;{{ continueSignDay if isSign else continueSignDay + 1 }}&nbsp;天
+            <span class="count">明日 + {{ tomorrowCopper }}</span>
+        </strong>
+        <strong class="js-current-sign {{ 'hide' if isSign }}">
+            今日签到&nbsp;+{{ todayCopper }}&nbsp;铜钱
+        </strong>
+        <p>
+            铜钱&nbsp;<span id="js-credit">{{ copperCount }}</span>
+        </p>
+    </div>
+    <div class="js-sign-btn sign-btn {{ 'disabled' if isSign }}">
+        <i class="icon icon-sign"></i>
+    </div>
+</div>
+
+<ul class="m-tabs">
+    <li id="calendar-tab" class="js-tab tab active" data-to="#js-calendar">
+        <span class="text">签到日历</span>
+    </li>
+    <li id="ranking-tab" class="js-tab tab" data-to="#js-ranking">
+        <span class="text">排行榜</span>
+    </li>
+</ul>
+<div id="js-calendar" class="m-calendar tab-content">
+    <div class="calendar">
+        <div class="weeks">
+            <span class="week">S</span>
+            <span class="week">M</span>
+            <span class="week">T</span>
+            <span class="week">W</span>
+            <span class="week">T</span>
+            <span class="week">F</span>
+            <span class="week">S</span>
+        </div>
+        <div class="days">
+            {% for days in signDays %}
+            <div class="row">
+                {% for day in days %}
+                <div class="day{{ ' disabled' if day.disabled }}{{ ' current' if day.current }}{{ ' active' if day.active }}">{{ day.date }}</div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="js-recommend item" data-share="{{ isShare }}">
+            <i class="icon icon-recommend"></i>
+            <div class="text recommend">
+                <em>今日推荐</em>
+                <span>分享得铜钱</span>
+            </div>
+        </div>
+        <a class="item" href="/m/member/jishi?popup=1&need_login=1&navTitle=集市兑换">
+            <i class="icon icon-market"></i>
+            <div class="text market">
+                <em>集市兑换</em>
+                <span>铜钱换好礼</span>
+            </div>
+        </a>
+    </div>
+</div>
+<div id="js-ranking" class="m-ranking tab-content"></div>
+<input type="hidden" name="shareCopper" value='{{ shareCopper }}' >
+</body>
+</html>

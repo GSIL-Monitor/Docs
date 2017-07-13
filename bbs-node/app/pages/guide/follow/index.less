@@ -1,0 +1,164 @@
+@import "~common/base/foundation";
+
+body {
+    background-color: #fff;
+}
+
+.m-header {
+    position: relative;
+    margin-left: 1.2rem;
+    margin-right: 1.2rem;
+    padding-top: 2.5rem;
+    text-align: center;
+
+    > .title {
+        color: #d94b40;
+        font-size: 2.1rem;
+    }
+
+    > .sub {
+        color: @dark-gray;
+        font-size: 1.4rem;
+    }
+
+    > .close{
+        position: absolute;
+        left: 0;
+        top: 1.4rem;
+        color: #858585;
+        font-size: 1.4rem;
+        width: 2.4rem;
+        height: 2.4rem;
+        background: url(./img/close.png);
+        background-size: contain;
+    }
+}
+
+.m-users {
+    margin-top: 2.5rem;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+    padding-bottom: 10rem;
+
+    .item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    .avatar {
+        position: relative;
+        width: 5rem;
+        height: 5rem;
+        margin-right: 1.2rem;
+        border-radius: 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        > .verify {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 1.7rem;
+            height: 1.7rem;
+            border-radius: 50%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            z-index: 2;
+
+            &.verify-1 {
+                background-image: url(img/verify-1.png?base64);
+            }
+            &.verify-2 {
+                background-image: url(img/verify-2.png?base64);
+            }
+        }
+    }
+
+    .content {
+        flex: 1;
+
+        .name {
+            color: #333;
+            font-size: 1.6rem;
+        }
+
+        .desc {
+            color: @dark-gray;
+            font-size: 1.2rem;
+            overflow: hidden;
+            text-overflow:ellipsis;
+            white-space: nowrap;
+            width: 14.7rem;
+        }
+    }
+    .btn-follow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 6rem;
+        height: 2.4rem;
+        color: #d94b40;
+        font-size: 1.2rem;
+        line-height: 1;
+        border: 1px solid #d94b40;
+        border-radius: .4rem;
+        background-color: #fff;
+
+        &.disabled {
+            pointer-events: none;
+        }
+
+        &:after {
+            content: '关注';
+        }
+
+        > .icon-plus {
+            width: 1rem;
+            height: 1rem;
+            margin-right: .3rem;
+            background-image: url(./img/plus.png?base64);
+            background-size: contain;
+        }
+
+        &.followed {
+            color: #b5b9be;
+            border-color: #b5b9be;
+
+            &:after {
+                content: '已关注';
+            }
+
+            > .icon-plus {
+                display: none;
+            }
+        }
+    }
+}
+
+.m-next {
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 10rem;
+    background: url(img/mask.png) no-repeat center;
+    background-size: cover;
+
+    > .btn {
+        display: block;
+        width: percentage(500/640);
+        height: 4.4rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 3rem;
+        color: #fff;
+        font-size: 1.6rem;
+        line-height: 4.4rem;
+        border-radius: .4rem;
+        text-align: center;
+        background-color: #d94b40;
+    }
+}

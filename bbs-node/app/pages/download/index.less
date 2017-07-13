@@ -1,0 +1,82 @@
+@import "~common/styles/index";
+@import "~common/styles/v2/variable";
+@import "~common/styles/v2/index";
+@import "~common/styles/1px";
+
+html,body{
+	height: 100%;
+}
+
+body{
+	background-color: #fff;
+}
+
+html[data-layout=showOpenGuide] .open-guide {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.g3{
+	color: @globalTextColor3;
+}
+.open-guide{
+	display: none;
+	background-color: #1B1B1F;
+	color: #fff;
+	height: 60px;
+	line-height: 60px;
+	position: relative;
+	padding-left: 1.6rem;
+	padding-right: 1rem;
+	.OpenGuide-arrow{
+		display: inline-block;
+		width: 62px;
+		height: 34px;
+		background:url(./img/arrow.png) no-repeat;
+		background-size: 62px 34px;
+	}
+}
+
+.footerWrap{
+	flex:1;
+	display: flex;
+	align-items:center;
+}
+.m-thread-footer{
+	color: inherit;
+	padding: 2.5rem 1.6rem 2.5rem;
+	background-color: #fff;
+	text-align: center;
+	.logo{
+		width: 6rem;
+		height: 6rem;
+		margin-left:auto;
+		margin-right: auto;
+		margin-bottom: 1rem;
+		background:url(~common/img/wacai-bbs-logo.png);
+		background-size: 6rem 6rem;
+	}
+	.info{
+		margin-bottom: 1.6rem;
+		.slogan{
+			margin-bottom: 0.4rem;
+		}
+	}
+
+	.topic__lists{
+		text-align: left;
+		font-size: 0;
+		.topic{
+			margin-bottom: 1rem;
+			font-size: 1.2rem;
+			padding:0.6rem;
+			margin-right: 1rem;
+			&:active{
+				    background-color: transparent;
+    				color: @primaryColor;
+    				border-color: @primaryColor;
+			}
+		}
+	}
+}

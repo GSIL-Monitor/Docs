@@ -1,0 +1,146 @@
+.slidetop-enter {
+    animation:slidetop-in .3s;
+}
+
+.slidetop-leave {
+  animation:slidetop-out .3s;
+}
+
+.slideright-enter {
+  animation:slideright-in .3s;
+}
+.slideright-leave {
+  animation:slideright-out .3s;
+}
+
+.slideleft-enter {
+  animation:slideleft-in .3s;
+}
+.slideleft-leave {
+  animation:slideleft-out .3s;
+}
+
+
+@keyframes slidetop-in {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slidetop-out {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideright-in {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideright-out {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideleft-in {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideleft-out {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+
+.modal-enter, .modal-leave {
+  opacity: 0;
+}
+
+.modal-enter .modal-container,
+.modal-leave .modal-container {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.wux-fade-transition {
+    opacity: 1;
+    transition: opacity linear .2s
+}
+
+.wux-fade-enter,.wux-fade-leave {
+    opacity: 0
+}
+
+.wux-dialog-transition {
+    opacity: 1;
+    transition-duration: .4s;
+    transform: translate(-50%,-50%) scale(1)!important;
+    transition-property: transform,opacity!important
+}
+
+.wux-dialog-enter,.wux-dialog-leave {
+    opacity: 0
+}
+
+.wux-dialog-enter {
+    transform: translate(-50%,-50%) scale(1.185)!important
+}
+
+.wux-dialog-leave {
+    transform: translate(-50%,-50%) scale(1)!important
+}
+
+.toggle-transition {
+    transition: height .3s ease;
+    overflow: hidden;
+}
+
+.toggle-enter,
+.toggle-leave{
+  height : 0!important;
+}

@@ -1,0 +1,113 @@
+@width: 40px;
+@height: 40px;
+@cardHeight: 56px;
+@dividerColor: #E6E7E9;
+@backgroundColor: #fff;
+
+.countdownItem{
+  .cards {
+    background: @dividerColor;
+    height: @cardHeight;
+    width: @width;
+    border-radius: 8px;
+    display: inline-block;
+    position: relative;
+    box-shadow: 0 4px #F1F1F1;
+  }
+
+  .card {
+  	perspective: 500px;
+    position: absolute;
+
+    z-index:1;
+  }
+
+  .card.now {
+    z-index: 2;
+  }
+
+  .card:last-child {
+    z-index: 0;
+  }
+
+  .card.now + .card {
+    z-index: 3;
+  }
+
+  .card:after {
+    content: ' ';
+    position: absolute;
+    display: block;
+    top: 100%;
+    height:100%;
+    width: 100%;
+    z-index: 1;
+    transition: none;
+    box-shadow: none;
+    border-radius: 0 0 8px 8px;
+  }
+
+  .now + .card .sides,
+  .card:last-child .sides {
+    transform: rotateX(-180deg);
+    transition: all 1s;
+    transform-style: preserve-3d;
+  }
+
+  .card,
+  .front,
+  .back {
+  	width: @width;
+  	height: @cardHeight/2;
+  }
+
+  .sides {
+    position: relative;
+    transform-origin: bottom;
+    height: @cardHeight/2;
+  }
+
+  .side-num {
+    height: @height;
+    font-size: @height;
+    line-height: @cardHeight;
+    vertical-align: middle;
+    text-align: center;
+    box-sizing: border-box;
+    text-indent: 5%;
+    color: #6F7278;
+    font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+  }
+
+  .back .side-num  {
+    margin-top: -@cardHeight/2;
+  }
+
+  .controls {
+    margin-top: 100px;
+  }
+
+  .front,
+  .back {
+  	backface-visibility: hidden;
+  	position: absolute;
+    overflow-y: hidden;
+  	top: 0;
+  	left: 0;
+    background-color: @backgroundColor;
+    overflow: hidden;
+  }
+
+  .front {
+  	z-index: 2;
+  	transform: rotateY(0deg);
+    border-radius: 8px 8px 0 0;
+    margin-top: -1px;
+  }
+
+  .back {
+  	transform: rotateX(180deg);
+    border-radius: 0 0 8px 8px;
+    margin-bottom: -1px;
+  }
+}

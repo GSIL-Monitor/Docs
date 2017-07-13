@@ -1,0 +1,14 @@
+{% for les in posts %}
+		<a href="{{les.url}}" class="lessonListItem">
+				<div class="r-lesson-content">
+				    <div class="content">
+				        <div class="lesson-title">{{les.title}}</div>
+				        <span class="lesson-level">{{les.tag}}</span>
+				    </div>
+				    <div class="image">
+				    	<div class="cover lazy" data-src="{{les.picUrl}}"></div>
+				    </div>
+				</div>
+		</a>
+		<div class="line"></div>
+{% endfor %}

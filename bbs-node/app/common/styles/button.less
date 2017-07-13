@@ -1,0 +1,200 @@
+.btn {
+  display: inline-block;
+  padding: 0.3rem 0.5rem;
+  margin-bottom: 0;
+  font-size: 0.7rem;
+  font-weight: normal;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+
+.btn.btn-small{
+  font-size: 0.6rem;
+  padding:0.15rem 0.3rem;
+  border-radius: 2px;
+  line-height: 1;
+}
+
+.btn.disabled{
+  pointer-events: none;
+}
+
+.btn-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+.btn-default:active,
+.btn-default.active{
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
+.btn-default.disabled{
+  background-color: #f3f3f3;
+  color: #666;
+}
+
+.btn-default.outlined{
+  background-color: transparent;
+  color: #333;
+  border-color: #ccc;
+}
+
+.btn-default.outlined:active{
+  background-color: #ccc;
+  color: #fff;
+  border-color: #ccc;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: @primaryColor;
+  border-color: @primaryColor;
+}
+
+.btn-primary:active,
+.btn-primary.active{
+  color: #fff;
+  background-color: @primaryActiveColor;
+  border-color: @primaryActiveColor;
+}
+
+.btn-primary.outlined{
+  background-color: transparent;
+  color: @primaryColor;
+  border-color: @primaryColor;
+}
+
+.btn-primary.outlined:active{
+  background-color: @primaryColor;
+  color: #fff;
+  border-color: @primaryColor;
+}
+
+.btn-success {
+  color: #fff;
+  background-color: @successColor;
+  border-color: @successColor;
+}
+
+.btn-success:active,
+.btn-success.active{
+  color: #fff;
+  background-color: @successActiveColor;
+  border-color: @successActiveColor;
+}
+
+.btn-success.outlined{
+  background-color: transparent;
+  color: @successColor;
+  border-color: @successColor;
+}
+
+.btn-success.outlined:active{
+  background-color: @successColor;
+  color: #fff;
+  border-color: @successColor;
+}
+
+.btn-info {
+  color: #fff;
+  background-color: @infoColor;
+  border-color: @infoColor;
+}
+
+.btn-info:active,
+.btn-info.active{
+  color: #fff;
+  background-color: @infoActiveColor;
+  border-color: @infoActiveColor;
+}
+
+.btn-info.outlined{
+  background-color: transparent;
+  color: @infoColor;
+  border-color: @infoColor;
+}
+
+.btn-info.outlined:active{
+  background-color: @infoColor;
+  color: #fff;
+  border-color: @infoColor;
+}
+
+.btn-warn {
+  color: #fff;
+  background-color: @warnColor;
+  border-color: @warnColor;
+}
+
+.btn-warn:active,
+.btn-warn.active{
+  color: #fff;
+  background-color: @warnActiveColor;
+  border-color: @warnActiveColor;
+}
+
+.btn-warn.outlined{
+  background-color: transparent;
+  color: @warnColor;
+  border-color: @warnColor;
+}
+
+.btn-warn.outlined:active {
+  background-color:@warnColor;
+  color: #fff;
+  border-color: @warnActiveColor;
+}
+
+
+.btn-link {
+  font-weight: normal;
+  color: #337ab7;
+  border-radius: 0;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;font-size: 0.9rem;
+    padding: 0.5rem 0;
+    margin:10px 0;
+}
+
+.btns-row,
+.btns-tab {
+  -webkit-align-self: center;
+  align-self: center;
+  display: flex;
+  -webkit-box-lines: single;
+  -webkit-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+}
+.btns-row .btn {
+  border-radius: 0 0 0 0;
+  margin-left: -1px;
+  width: 100%;
+  -webkit-box-flex: 1;
+}
+.btns-row .btn.active {
+  
+}
+.btns-row .btn:first-child {
+  border-radius: 0.25rem 0 0 0.25rem;
+  margin-left: 0;
+  border-left-width: 1px;
+  border-left-style: solid;
+}
+.btns-row .btn:last-child {
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+

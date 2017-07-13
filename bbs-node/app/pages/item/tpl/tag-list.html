@@ -1,0 +1,27 @@
+<div class="main">
+    <div class="title">
+        活跃财友
+    </div>
+    <ul class="user-list">
+        {% for item in data %}
+        <li>
+            <div class="avatar lazy" style="background-image: url('{{ item.avatarUrl }}')">
+                {% if item.verifyUrl %}
+                <i class="icon verify lazy" style="background-image: url('{{ item.verifyUrl }}')" ></i>
+                {% endif %}
+            </div>
+            <div class="info">
+                <div class="name"><div class="nick">{{ item.username }}</div></div>
+                <div class="stat">
+                    <span class="space">粉丝:{{ item.fansCount }}</span>
+                    发帖:{{ item.postCount }}
+                </div>
+            </div>
+            <div data-stat="threaddetail_follow" class="js-follow btn-follow recommend" data-uid="{{ item.uid }}">
+                <i class="icon-plus"></i>
+            </div>
+        </li>
+        {% endfor %}
+
+    </ul>
+</div>

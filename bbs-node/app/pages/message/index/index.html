@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    {% set pageTitle = '消息' %}
+    {% include "../../partial/header.html" %}
+</head>
+<body>
+<div class="m-menu">
+    <a href="/app/message/reply?popup=1&need_login=1&navTitle=回复与@">
+        <div class="js-item item">
+            <i class="icon icon-reply"></i>
+            <em class="title">回复与@</em>
+            {% if notify.reply != '0' %}
+            <span class="icon count count-{{ notify.reply | length }}">{{ notify.reply }}</span>
+            {% endif %}
+            <i class="icon icon-arrow"></i>
+        </div>
+        <div class="line"></div>
+    </a>
+    <a href="/app/message/like?popup=1&need_login=1&navTitle=赞">
+        <div class="js-item item">
+            <i class="icon icon-like"></i>
+            <em class="title">赞</em>
+            {% if notify.like != '0' %}
+            <span class="icon count count-{{ notify.like | length }}">{{ notify.like }}</span>
+            {% endif %}
+            <i class="icon icon-arrow"></i>
+        </div>
+        <div class="line"></div>
+    </a>
+    <a href="/app/follow?fans=1&popup=1&uid={{ user.uid }}&need_login=1&navTitle=粉丝和关注">
+        <div class="js-item item" data-type="follow">
+            <i class="icon icon-follow"></i>
+            <em class="title">新粉丝</em>
+            {% if notify.follow != '0' %}
+            <span class="icon count count-{{ notify.follow | length }}">{{ notify.follow }}</span>
+            {% endif %}
+            <i class="icon icon-arrow"></i>
+        </div>
+    </a>
+</div>
+
+{% if items.length > 0 %}
+<div class="js-list m-list" data-count="{{ items.length }}">
+    {% include "./tpl/item.html" %}
+</div>
+{% endif %}
+</body>
+</html>

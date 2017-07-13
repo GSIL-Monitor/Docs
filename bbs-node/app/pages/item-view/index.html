@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    {% include "../partial/header.html" %}
+    <meta name="apple-itunes-app" content="app-id=1070688103, app-argument=wacaiforum://bbs/bbsService/detail.page?tid={{ post.tid }}">
+</head>
+<body>
+
+
+<div class="m-header">
+    <div class="content">
+        <div class="desc">
+            <div class="tit">钱堂</div>
+            <div class="sub">教你千条赚钱技巧</div>
+        </div>
+        <div class="action">
+            <a class="act download" href="{{ downLoadUrl }}">立即下载</a>
+            <div class="js-app-open act open">打开 APP</div>
+        </div>
+    </div>
+</div>
+
+{% if not isWeibo and post.subject %}
+    <h1 class="post-title">{{ post.subject }}</h1>
+{% endif %}
+
+<div class="m-profile">
+    <div class="info">
+        <a class="author" href="/m/profile?uid={{ post.author.uid }}&popup=1&need_zinfo=1&navTitle=个人主页">
+            <div class="avatar" style="background-image: url({{ post.author.headImgUrl }});">
+                {% if post.author.verifyUrl %}
+                <i class="icon verify" style="background-image:url({{ post.author.verifyUrl }});"></i>
+                {% endif %}
+            </div>
+            <div class="name">{{ post.author.nickName }}</div>
+        </a>
+        <div class="time">{{ post.postTime }}</div>
+    </div>
+</div>
+
+<div id="js-post" class="m-post">
+    <div class="js-post-wrap post-wrap">
+        <div class="js-post-content post-content">{{ post.message | safe }}</div>
+    </div>
+    <div class="js-more post-more">
+        <i class="icon icon-more"></i>展开全文
+    </div>
+
+    {% if post.reprint == 1 %}
+    <div class="copy-right">未经允许，禁止转载</div>
+    {% endif %}
+
+    <div class="post-actions">
+        <div class="js-like-anchor wux-1px-radius act {{ 'liked' if stats.like }}">
+            <i class="icon icon-like"></i>
+            <span class="js-like-count count">{{ stats.likes if stats.likes > 0 }}</span>
+        </div>
+        <div class="js-app-open wux-1px-radius act">
+            <i class="icon icon-reply"></i>回复{{ stats.replies if stats.replies > 0 }}
+        </div>
+    </div>
+</div>
+
+{% import "../item/tpl/reply.html" as reply %}
+
+<div id="js-recommend" class="m-recommend"></div>
+
+{% if licaiCouponCount > 0 %}
+<div>
+    <p class="has-received">已有&nbsp;<em class="person-account">{{ licaiCouponCount }}</em>&nbsp;位财友领取福利</p>
+</div>
+{% endif %}
+
+<div class="m-reply">
+    <div id="js-reply-sum" class="reply-sum">财友回复&nbsp;{{ stats.replies if stats.replies > 0}}</div>
+
+    {# 热门回复 #}
+    {% if replies.length > 0 %}
+    <div id="js-hot-reply" class="hot-reply reply-list">
+        {% for item in replies %}
+        {{ reply.gen(item, 'view') }}
+        {% if not loop.last %}
+        <div class="line"></div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {# 普通回复 #}
+    <div id="js-normal-reply" class="normal-reply reply-list">
+        {% if stats.replies == 0 %}
+            <div class="empty-reply">
+                <i class="icon icon-sofa"></i>
+                沙发空缺中, 求&nbsp;<a class="js-app-open reply-anchor">回复</a>
+            </div>
+        {% else %}
+            <div class="js-spinner icon-spinner"></div>
+        {% endif %}
+    </div>
+    {% if stats.replies > 3 %}
+        <div class="js-app-open m-app-open">打开 APP 查看全部回复</div>
+    {% endif %}
+</div>
+
+{# 推荐阅读 #}
+<div class="js-recommend-posts m-recommend-posts">
+    <div class="head">推荐阅读</div>
+</div>
+
+{# 社区热点 #}
+<div class="m-hot-topics">
+    <div class="head">社区热点</div>
+    <div class="topics">
+        <div class="row">
+            <a class="topic" href="/app/tag?tagId=16104&popup=1&need_zinfo=1&navTitle=理财规划">理财规划</a>
+            <a class="topic" href="/app/tag?tagId=16069&popup=1&need_zinfo=1&navTitle=股票">股票</a>
+            <a class="topic" href="/app/tag?tagId=16847&popup=1&need_zinfo=1&navTitle=房产">房产</a>
+            <a class="topic" href="/app/tag?tagId=16792&popup=1&need_zinfo=1&navTitle=信用卡">信用卡</a>
+        </div>
+        <div class="row">
+            <a class="topic" href="/app/tag?tagId=16842&popup=1&need_zinfo=1&navTitle=读书会">读书会</a>
+            <a class="topic" href="/app/tag?tagId=16066&popup=1&need_zinfo=1&navTitle=基金">基金</a>
+            <a class="topic" href="/app/tag?tagId=16828&popup=1&need_zinfo=1&navTitle=生活">生活</a>
+            <a class="topic" href="/app/tag?tagId=16144&popup=1&need_zinfo=1&navTitle=薅羊毛">薅羊毛</a>
+        </div>
+    </div>
+</div>
+
+{# 底部下载 #}
+<div class="m-download-footer">
+    <div class="content">
+        <div class="bbs">
+            <div class="logo"></div>
+            <div class="info">
+                <div class="tit">钱堂</div>
+                <div class="sub">教你千条赚钱技巧</div>
+            </div>
+        </div>
+        <a class="download" href="{{ downLoadUrl }}">立即下载</a>
+    </div>
+</div>
+
+<script>
+    window.__INIT_DATA__ = {{ INIT_STATE | dump | safe }};
+</script>
+</body>
+</html>

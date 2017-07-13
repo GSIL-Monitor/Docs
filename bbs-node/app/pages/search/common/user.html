@@ -1,0 +1,14 @@
+{% for user in users %}
+{% if isQiantang %}
+<a class="item" href="{{ user.homePageUrl }}">
+{% else %}
+<a class="item" href="{{ user.homePageUrl }}&navTitle=个人主页">
+{% endif %}
+    <div class="avatar lazy" data-src="{{ user.headImgUrl }}">
+    </div>
+    <div class="info">
+        <div class="name">{{ user.nickName | safe }}</div>
+    </div>
+</a>
+<div class="line"></div>
+{% endfor %}

@@ -1,0 +1,40 @@
+{% for post in posts %}
+    {% set author = post.author %}
+    <div class="post border-pixel">
+        <div class="post-head">
+            <div class="user">
+                <a class="user-anchor" href="/m/profile?uid={{ author.uid }}&popup=1&need_zinfo=1&navTitle=个人主页">
+                    <div class="avatar lazy" data-src="{{ author.headImgUrl }}">
+                        {% if author.verifyUrl %}
+                            <i class="icon verify" style="background-image: url({{ author.verifyUrl }});"></i>
+                        {% endif %}
+                    </div>
+                    <div class="name">{{ author.nickName }}</div>
+                </a>
+            </div>
+            <div class="time">{{ post.postTimeConvert }}</div>
+        </div>
+        <div class="post-body">
+            <a class="post-anchor" href="/m/thread?mod=viewthread&tid={{ post.tid }}&popup=1&need_zinfo=1&navTitle=帖子详情">
+                <div class="title">{{ post.title }}</div>
+                <div class="content {{ 'line-clamp-1' if post.picture }}">{{ post.summary }}</div>
+                {% if post.picture %}
+                    <div class="thumb lazy" data-src="{{ post.picture }}"></div>
+                {% endif %}
+                <div class="summary">
+                    {% if post.digest == 1 %}
+                        <div class="item">
+                            <div class="tag border-pixel">精华</div>
+                        </div>
+                    {% endif %}
+                    <div class="item">
+                        <i class="icon icon-reply"></i> {{ post.replies }}
+                    </div>
+                    <div class="item">
+                        <i class="icon icon-like"></i> {{ post.likes }}
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+{% endfor %}

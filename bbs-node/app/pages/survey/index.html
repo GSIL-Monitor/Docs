@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    {% set pageTitle = '我的理财基因' %}
+    {% include "../partial/header.html" %}
+    
+</head>
+<body>
+     <div class="content">
+     	<div class="banner tc">
+     		<img src="./img/banner.png" class="responsive">
+     	</div>
+		<div class="form ovh" id="formContainer">
+			<div class="cardContainer" id="js-cardContainer" style="width:{{surveyList.questions.length}}00%">
+				 {% for question in surveyList.questions %}
+				 {% set looper = loop %}
+				 {% set klass = '' if(loop.index == 1) else 'hidden' %}
+				<div class="card {{klass}}" style="width:{{percent}}%">
+					<div class="topArea tc">
+						<div class="indicator flex wux-center">
+							{% for question in surveyList.questions %}
+							{% if looper.index >= loop.index  %}
+								<div class="navItem active"></div>
+							{% else %}
+								<div class="navItem"></div>
+							{% endif %}
+							{% if loop.last %}
+							{% elif looper.index > loop.index %}
+								<div class="divider active"></div>
+							{% else %}
+								<div class="divider"></div>
+							{% endif %}
+							{% endfor %}
+						</div>
+						{% if question.type == 2 %}
+							<div class="indicTxt">{{question.question}}<em class="f14">（多选）</em></div>
+						{% else %}
+							<div class="indicTxt">{{question.question}}</div>
+						{% endif %}
+					</div>
+					<!-- 单选 -->
+					{% if question.type == 1 %}
+					<div class="weui_cells weui_cells_radio">
+					{% for option in question.options %}
+					  <label class="weui_cell weui_check_label" for="radio_type_{{question.id}}_id_{{ option.id }}">
+					    <div class="weui_cell_hd">
+					      <span>
+					        <input type="radio" class="weui_check" name="radio_type_{{ question.id }}" data-type="{{ question.id }}" value="{{ option.id }}" id="radio_type_{{question.id}}_id_{{ option.id }}"
+							required
+					        >
+					      </span>
+					    </div>
+					    <div class="weui_cell_bd weui_cell_primary">
+					      <p>{{ option.content }}</p>
+					    </div>
+					    <div class="weui_cell_ft">
+					    </div>
+					  </label>
+					  {% endfor %}
+					</div>
+					{% elif question.type == 2 %}
+						<div class="weui_cells weui_cells_checkbox">
+							{% for option in question.options %}
+							<label class="weui_cell weui_check_label" for="checkbox_type_{{ question.id }}_id_{{option.id}}">
+								<div class="weui_cell_hd"> 
+									<span><input type="checkbox" class="weui_check" value="{{ option.id }}"  name="check_type_{{ question.id }}"
+									data-type="{{ question.id }}" id="checkbox_type_{{ question.id }}_id_{{option.id}}" required></span> 
+								</div>
+								<div class="weui_cell_bd weui_cell_primary">
+									<p>{{ option.content }}</p>
+								</div>
+								<div class="weui_cell_ft"></div>
+							</label>
+							{% endfor %}
+						</div>
+					{% endif %}
+					
+					{% if looper.last %}
+						<div class="btnRow surveyBtnRow">
+							<a href="javascript:;" class="btn btn-primary btn-block" id="submitSurvey" type="submit">
+								提交
+							</a>
+						</div>
+					{% endif %}
+					
+					{% if looper.index == 1 %}
+					<div class="footerTxt g4 f13">
+						<div class="media">
+							<span class="fl">注：</span>
+							<div class="media-body">
+								<p>1、您的信息将以匿名形式在问题页显示</p>
+								<p>2、您可在设置 - 个人资料中进行后续修改</p>
+							</div>
+						</div>
+					</div>
+					{% endif %}
+
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	
+     </div>
+	
+<script type="text/javascript">
+	window.INIT_DATA = {{ INIT_DATA | dump | safe }}
+</script>
+</body>
+</html>

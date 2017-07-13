@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    {% set pageTitle = '已连续签到' %}
+    {% include "../partial/header.html" %}
+</head>
+<body>
+
+<div id="app" class="signer">
+    
+</div>
+
+<script type="text/javascript">
+	window.__INITDATA__ = {{ data | dump | safe }}
+
+</script>
+</body>
+</html>
+

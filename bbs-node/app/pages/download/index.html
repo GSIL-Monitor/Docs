@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" data-layout="showOpenGuide">
+<head>
+    {% set pageTitle = '钱堂' %}
+    {% include "../partial/header.html" %}
+</head>
+<body>
+   <div class="container flex flex-column">
+   		<div class="open-guide flex-between">
+   			<div id="guideText">点击右上角，选择浏览器打开</div>
+   			<span class="OpenGuide-arrow"></span>
+   		</div>
+		
+		<div class="footerWrap">
+	   		<div class="m-thread-footer db">
+	   			<div class="bbs">
+	   				<div class="logo"></div>
+	   				<div class="info">
+	   					<div class="g2 f16 slogan">越逛越有钱的理财社区</div>
+	   					<div class="g3 f14">39122384 位财友在这里热聊</div>
+	   				</div>
+	   				<div class="topic__lists">
+	   					<span class="topic btn btn-primary outlined">＃你涨工资了吗？</span>
+	   					<span class="topic btn btn-primary outlined">＃你有几套房？</span>
+	   					<span class="topic btn btn-primary outlined">＃早餐花几元？</span>
+	   					<span class="topic btn btn-primary outlined">＃幼儿园学费多少？</span>
+	   					<span class="topic btn btn-primary outlined">＃如何克服起床困难症？</span>
+	   					<span class="topic btn btn-primary outlined">＃免息贷款合算吗？</span>
+	   				</div>
+	   			</div>
+	   			{% if not isWechat %}
+	   			<a class="download btn btn-block btn-primary" href="//www.wacai.com/app/download?key=wacaicommunity_00000001" id="downloadLink">立即下载，我也有话说</a>
+	   			{% endif %}
+	   		</div>
+   		</div>
+
+   </div>
+
+</body>
+</html>

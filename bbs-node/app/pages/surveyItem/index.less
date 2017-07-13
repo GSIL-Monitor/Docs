@@ -1,0 +1,92 @@
+@import "~common/styles/index";
+@import "~common/styles/v2/variable";
+@import '~components/weui/widget/weui_cell/weui_cell_global';
+@import '~components/weui/widget/weui_cell/weui_check';
+@import "~common/styles/v2/index";
+@import "~common/styles/1px";
+@import "~common/styles/wux";
+
+html{
+    .usn();
+}
+.weui_check{
+    &:after{
+           width: 6px;
+    height: 9px;
+    top: 2px;
+    left: 4px;
+    }
+}
+
+.weui_check:checked {
+    background-color: '#fff';
+    border-color: @primaryColor;
+}
+
+.weui_check:checked {
+    &:after{
+        border-color: @primaryColor;
+    }
+}
+
+.weui_cell.active{
+    .weui_cell_primary{
+        color: @primaryColor;
+    }
+}
+
+.weui_cell{
+    &:active {
+        background-color: #FFFFFF !important;
+    }
+    .weui_check {
+        position: relative;
+        left: auto;
+    }
+    &:before {
+       border-top: 1px solid #E6E7E9;
+    }
+}
+
+
+
+.weui_cell{
+    font-size: 1.6rem;
+    padding:1.4rem 2.4rem 1.4rem 0rem;    //99-1.4*32)/2/20
+    color:#4B4F56;
+    margin-left: 2.4rem;
+    &:before{
+        left: 0;
+    }
+}
+.weui_cells{
+    margin-top: 1.2rem;
+    &:before{
+        border-top: 0;
+    }
+    &:after{
+        border-bottom: 0;
+    }
+}
+.content{
+    background-color: #f6f7f9;
+}
+.weui_cell.active{
+    .weui_cell_primary.p{
+        color: @primaryColor;
+    }
+    /*.weui_cell_primary input{             单选延迟bug：排除 控件导致bug
+        border: 1px solid @primaryColor;
+    }
+    :after{
+        content: url('copy.png');
+        background-repeat: none;
+    }*/
+}
+
+.weui_check{
+    width: 1.6rem;
+    height: 1.6rem;
+    border: 1px solid #C0C3CB;
+}
+

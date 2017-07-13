@@ -1,0 +1,8 @@
+{% for post in posts %}
+<a class="item" href="{{ post.postUrl }}&navTitle=帖子详情">
+    <div class="title">{{ post.subject | safe }}</div>
+    <div class="content">{{ post.message | safe }}</div>
+    <div class="replies-likes"><span>{{ post.replies}} 回复</span><span>{{ post.likes}} 赞</span></div>
+</a>
+<div class="line"></div>
+{% endfor %}

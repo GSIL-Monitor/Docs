@@ -1,0 +1,33 @@
+<div class="m-dialog">
+    {% if increase %}
+    <h2 class="message">
+        <em>签到成功！</em>&nbsp;获得&nbsp;<em>{{ increase }}</em>&nbsp;铜钱
+    </h2>
+    {% endif %}
+    <div class="recommend">
+        <div class="icon icon-background">
+            <div class="recommend-content wux-center">
+                <div class="text-wrapper">
+                    <div class="divider">
+                        <span>今日推荐</span>
+                    </div>
+                    <div>分享再拿 {{ shareCopper }} 铜钱 每日限 1 次</div>
+                </div>
+            </div>
+        </div>
+        <div class="post">
+            <a href="{{ url }}">
+                <h3 class="title">{{ title }}</h3>
+                <p class="summary">{{ summary }}</p>
+            </a>
+            <div class="center">
+                <div class="js-share-btn share-btn">分享到朋友圈
+                {% if not isShare %}
+                    铜钱+{{ shareCopper }}
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="js-close close"></div>
+</div>

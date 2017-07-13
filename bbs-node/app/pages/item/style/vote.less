@@ -1,0 +1,134 @@
+@import "~common/styles/variable.less";
+@import "~common/styles/base.less";
+@import "./variable.less";
+@import "~common/styles/mixin.less";
+@import "~common/styles/button.less";
+@import "~common/styles/1px.less";
+@import "~common/styles/wux.less";
+
+//投票区域
+.vote-area {
+    margin: 0 -1.5rem;
+    padding: 1.2rem 1.5rem 1.4rem;
+    background-color: #f6f7f9;
+    .vote-header{
+        .voteTypeLabel{
+            display: inline-block;
+            font-size: 1.2rem;
+            color: @primaryColor;
+            padding:0 .4rem;
+            margin-right: 6px;
+            line-height: 20px;
+            border-color: @primaryColor;
+        }
+        .vote-title{
+            font-size: 1.8rem;
+            line-height: 2rem;
+            color: @globalTextColor2;
+            margin-left: 0.5rem;
+            margin-right: 1.6rem;
+        }
+    }
+    .vote-wrap{
+        margin-top: 1rem;
+        background-color: #fff;
+        ul{
+            border: 1px solid #e6e7e9;
+            li{
+                display: flex;
+                position: relative;
+                color: #4785C9;
+                min-height:4.6rem;
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+                align-items:center;
+                font-size: 1.6rem;
+                padding-right: 1rem;
+                &:not(:last-child){border-bottom: 1px solid #e6e7e9;}
+                &.active{
+                    color: @primaryColor;
+                }
+                .bar{
+                    position: absolute;
+                    z-index: 0;
+                    left: 0;
+                    top:0;
+                    height: 100%;
+                    width: 0%;
+                    transition: width 0.4s ease;
+                }
+                .content{
+                    margin-right: 14%;
+                    margin-left: 14%;
+                    z-index: 2;
+                    word-break: break-all;
+                    flex:1;
+                    text-align: center;
+                    font-size: 1.6rem;
+                    line-height: 2.2rem;
+                }
+                .num{
+                    position: absolute;
+                    top:0;
+                    right: 1rem;
+                    height: 100%;
+                    display: flex;
+                    align-items:center;
+                }
+                .checkbox{
+                    position: absolute;
+                    right: 0;
+                    top:0;
+                    width: 4rem;
+                    height: 100%;
+                    display: flex;
+                    align-items:center;
+                    justify-content:center;
+                }
+                .checkbox-checked{
+                    width: 6px;
+                    height: 12px;
+                    border: 2px solid @primaryColor;
+                    border-left: 0;
+                    border-top: 0;
+                    transform: rotate(45deg);
+                }
+
+            }
+            
+        }
+    }
+    .voted{
+        .content{color:#4b4f56;}  
+        .num{color:#93979f;}
+    }
+   
+    .vote-footer{
+        margin: 1rem 0 1.4rem;
+        font-size: 1.2rem;
+        line-height: 1.2rem;
+        color:#c0c3cb;
+    }
+    .vote-muti{
+        display: flex;
+        justify-content: center;
+        .vote-btn{
+            width: 110px;
+            height: 32px;
+            font-size: 14px;
+            text-align: center;
+            background: #ff4d58;
+            border-radius: 20px;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2){
+    .wux-1px-radius:before{
+        border-color: @primaryColor;
+    }
+}

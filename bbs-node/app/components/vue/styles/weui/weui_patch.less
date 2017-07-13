@@ -1,0 +1,70 @@
+.weui_cell_box.weui_cell {
+  padding:0;
+}
+
+.weui_cell_ft [slot=value]{
+  display: inline-block;
+}
+
+.weui_cell_ft.with_arrow:after{
+  content: " ";
+  display: inline-block;
+  transform: rotate(45deg);
+  height: 8px;
+  width: 8px;
+  border-width: 2px 2px 0 0;
+  border-color: @globalArrowColor;
+  border-style: solid;
+  position: relative;
+  top: -1px;
+  margin-left: .3em;
+}
+
+.weui_panel_hd.with_arrow:before{
+  content: " ";
+  transform-origin:center center;
+  transition:transform .377s ease;
+  transform: rotate(45deg);
+  display: inline-block;
+  height: 8px;
+  width: 8px;
+  border-width: 2px 2px 0 0;
+  border-color: @globalArrowColor;
+  border-style: solid;
+  position: absolute;
+  right:20px;
+  top:50%;
+  margin-top: -6px;
+}
+
+.is-active > .weui_panel_hd.with_arrow:before{
+  transform: rotate(135deg);
+}
+
+.weui_cells > a {
+  color:#000;
+}
+
+.weui_dialog_alert,.weui_dialog_confirm{
+  position: relative;
+  z-index: 2;
+}
+
+.weui_cells_radio .weui_cell_hd {
+    padding-right: 0.35em;
+}
+
+.weui_mask{
+  background-color: @overlayBg;
+}
+
+.weui_btn_dialog {
+    &.primary {
+        color: @dialogBtnPrimaryColor;
+    }
+}
+
+.weui_grids{
+  display: flex;flex-wrap:wrap;
+  .weui_grid{float:none;text-align: center;}
+}

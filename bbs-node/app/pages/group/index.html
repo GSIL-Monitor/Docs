@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    {% set pageTitle = '' %}
+    {% include "../partial/header.html" %}
+</head>
+<body>
+
+{% set tag = tagInfo.tag %}
+
+{# 标签信息 #}
+{% if isWacai %}
+    <div class="bg-pic-{{bg_id}}">
+        <div class="m-tag-groupinfo">
+            <div class="group-img"><img src="{{pageInfo.tag.icon}}"></img></div>
+            <div class="group-name">{{pageInfo.tag.name}}</div>
+            {% if pageInfo.tag.desc.length>0 %} 
+            <div class="group-des">
+                <div class="left"><i class="icon icon-horn"></i></div>
+                <div class="right">{{pageInfo.tag.desc}}</div>
+            </div>
+            {% endif %}
+        </div>
+        <div class="m-tag-summary">
+            <div>
+                {% if members.length > 0 %}
+                    <a data-stat="groupdetail_group" class="subscription" href="/app/tag/member?tagId={{ tag.id }}&nav={{ tag.parsedName}}&popup=1&need_zinfo=1">
+                        <div class="user-list">
+                            {% for user in members %}
+                                <div class="avatar lazy" data-src="{{ user.headImgUrl }}"></div>
+                            {% endfor %}
+                        </div>
+                        <div class="sub-count">
+                            <em class="vm">共 {{ tag.subscribeCount }} 人</em><i class="icon icon-arrow vm"></i>
+                        </div>
+                    </a>
+                {% else %}
+                    <div class="empty-sub">
+                        还没有小伙伴加入，赶快加入吧！
+                    </div>
+                {% endif %}
+            </div>
+            <div data-stat="groupdetail_add" class="js-subscribe btn-subscription {{ 'subscribed' if tagInfo.subscribed  }}" data-tagid="{{ tag.tagId }}">
+               
+            </div>
+        </div>
+    </div>   
+{% else %}
+    <div class="m-header">
+        <div class="content">
+            <div class="desc">
+                <div class="tit">钱堂</div>
+                <div class="sub">教你千条赚钱技巧</div>
+            </div>
+            <div class="action">
+                <a class="act download" href="{{ downLoadUrl }}">立即下载</a>
+                <div class="js-app-open act open">打开 APP</div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{# 推荐活动 #}
+{% if tagInfo.tagAdList.length > 0 %}
+    {% set ad = tagInfo.tagAdList[0] %}
+    <div class="m-recommend-act border-pixel">
+        <a class="anchor" href="{{ ad.url }}">
+            <div class="tag">{{ ad.subject }}</div>
+            <div class="title">{{ ad.title }}</div>
+            <span class="icon icon-arrow"></span>
+        </a>
+    </div>
+{% endif %}
+
+{# 标签列表分类 #}
+<div class="m-tabs border-pixel">
+    <div class="tab tab-new">
+        <div data-stat="groupdetail_last_TAB" class="js-tab-anchor anchor {{ 'active' if tabType == 'new' }}" data-type="new">最新</div>
+    </div>
+    <div class="tab tab-best">
+        <div data-stat="groupdetail_elite_TAB" class="js-tab-anchor anchor {{ 'active' if tabType == 'digest' }}" data-type="digest">精华</div>
+    </div>
+    <div class="tab tab-sort">
+        <div class="js-sort-type sort-type sort-post {{ 'hide' if tabType == 'digest' }}"></div>
+        <div class="sort-overlay">
+            <div data-stat="groupdetail_sort_rule" class="js-sort-item sort-item item-post border-pixel" data-type="post">发表时间排序</div>
+            <div data-stat="groupdetail_sort_rule" class="js-sort-item sort-item item-reply" data-type="reply">回复时间排序</div>
+        </div>
+    </div>
+</div>
+
+{# 帖子列表 #}
+<div class="m-post-list">
+    {% if posts.length %}
+        {% include "./tpl/post.html" %}
+    {% endif %}
+</div>
+
+{# 底部下载 #}
+{% if not isWacai %}
+    <div class="m-download-footer">
+        <div class="content">
+            <div class="bbs">
+                <div class="logo"></div>
+                <div class="info">
+                    <div class="tit">挖财社区</div>
+                    <div class="sub">聊投资学理财</div>
+                </div>
+            </div>
+            <a class="download" href="{{ downLoadUrl }}">立即下载</a>
+        </div>
+    </div>
+{% else %}
+    <a data-stat="groupdetail_post" class="js-new-post m-new-post"></a>
+{% endif %}
+
+<script>
+    window.__INIT_DATA__ = {{ INIT_DATA | dump | safe }}
+</script>
+</body>
+</html>

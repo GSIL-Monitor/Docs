@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    {% set pageTitle = '大家都在说' %}
+    {% include "../partial/header.html" %}
+</head>
+<body>
+
+
+{% for topic in topics%}
+    <div class="topic" style="background-image:url({{topic.backgroundUrl}})">
+        <a data-stat="topic_more" href="{{ topic.url }}&navTitle=帖子详情" class="topic">
+            {{ topic.title }}
+        </a>
+    </div>
+{% endfor %}
+
+
+
+
+
+</body>
+</html>

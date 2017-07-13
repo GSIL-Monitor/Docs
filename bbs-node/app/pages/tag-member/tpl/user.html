@@ -1,0 +1,37 @@
+{% macro gen(item) %}
+<div class="hot-user" data-index="{{ item.indexId }}">
+    <div class="user-head m-profile">
+        <div class="user-info">
+            <a class="author" href="/m/profile?uid={{ item.uid }}&popup=1&need_zinfo=1&navTitle=个人主页">
+                <div class="avatar lazy" data-src="{{ item.headImgUrl }}">
+                    {% if item.verifyUrl %}
+                    <i class="icon verify" style="background-image:url({{ item.verifyUrl }});"></i>
+                    {% endif %}
+                </div>
+                <div class="info-block">
+                    <div class="username">
+                        <div class="name">{{ item.nickName }} </div>
+                    </div>
+                    {% if item.lastThread %}
+                    <div class="info recommend-info">
+                        <label class="recommend-value">{{item.lastThread}}</label>
+                    </div>
+                    {% endif %}
+                    <div class="info">
+                        <label class="recommend-value">{{ item.fansCount }}人关注了TA</label>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% if not item.self %}
+        <div class="js-follow btn-follow {{ 'followed' if item.follow  }}" data-uid="{{ item.uid }}">
+            <i class="icon-plus"></i>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endmacro %}
+{% for item in users %}
+{{ gen(item) }}
+<div class="line"></div>
+{% endfor %}

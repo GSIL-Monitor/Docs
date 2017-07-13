@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    {% include "../partial/header.html" %}
+</head>
+<body>
+{% import "./tpl/user.html" as user %}
+
+{% if users.length > 0 %}
+    <div class="m-member-title">已加入的财友</div>
+{% endif %}
+
+<div class="js-user-container">
+    {% for item in users %}
+        {{ user.gen(item) }}
+        <div class="line"></div>
+    {% endfor %}
+</div>
+{% if users.length==0 %}
+    <div class="empty">还没有用户订阅</div>
+{% endif %}
+</body>
+</html>

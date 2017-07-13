@@ -1,0 +1,79 @@
+@import "~common/base/foundation";
+
+.m-list {
+    min-height: 100vh;
+    background-color: #fff;
+
+    .item {
+        display: flex;
+        padding: 1.5rem 1.2rem;
+        border-width: 0 0 1px 0;
+        .border-image();
+    }
+
+    .avatar {
+        display: block;
+        flex: 0 0 3rem;
+        width: 3rem;
+        height: 3rem;
+        overflow: hidden;
+        margin-right: 1rem;
+        border-radius: 50%;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .content {
+        display: block;
+        flex: 1;
+        width: 80%;
+    }
+
+    .reply {
+        color: #333;
+        font-size: 1.5rem;
+        line-height: 1.33;
+        .word-break();
+    }
+
+    .quote {
+        color: @gray;
+        font-size: 1.5rem;
+    }
+
+    .title {
+        margin-bottom: .5rem;
+        color: #333;
+        font-size: 1.5rem;
+        line-height: 1;
+
+        > .name {
+            display: inline-block;
+            max-width: 80%;
+            margin-right: 1.2rem;
+            color: #507daf;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        > .date {
+            float: right;
+            color: @gray;
+            font-size: 1.2rem;
+        }
+    }
+
+    .message {
+        margin-top: .6rem;
+        padding: .7rem .9rem;
+        font-size: 1.4rem;
+        border-radius: .5rem;
+        background-color: #f6f6f6;
+
+        > .text {
+            .ellipse();
+            color: @gray;
+        }
+    }
+}

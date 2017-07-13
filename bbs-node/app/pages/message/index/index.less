@@ -1,0 +1,177 @@
+@import "~common/base/foundation";
+
+.vm{
+    vertical-align: middle;
+}
+.m-menu {
+    margin-bottom: 1.5rem;
+    background-color: #fff;
+    border-width: 0 0 1px 0;
+    .border-image();
+
+    > a {
+        &:active > .item {
+            //background-color: @bg-color;
+        }
+    }
+
+    .line {
+        margin-left: 6.3rem;
+    }
+
+    .item {
+        display: flex;
+        align-items: center;
+        padding: .9rem 1.2rem;
+    }
+
+    .icon-reply,
+    .icon-like,
+    .icon-follow {
+        display: block;
+        width: 3.5rem;
+        height: 3.5rem;
+        margin-right: 1.2rem;
+    }
+    .icon-reply {
+        background-image: url(./img/reply.png?bas64);
+    }
+    .icon-like {
+        background-image: url(./img/like.png?bas64);
+    }
+    .icon-follow {
+        background-image: url(./img/follow.png?bas64);
+    }
+
+    .title {
+        display: block;
+        flex: 1;
+        color: #333;
+        font-size: 1.5rem;
+        font-style: normal;
+    }
+
+    .count {
+        position: relative;
+        display: block;
+        height: 1.8rem;
+        color: #fff;
+        font-size: 1.1rem;
+        line-height: 1.8rem;
+        text-align: center;
+        background-size: cover;
+    }
+
+    .count-1 {
+        width: 1.8rem;
+        background-image: url(./img/radius-1.png?bas64);
+    }
+    .count-2 {
+        width: 2.4rem;
+        background-image: url(./img/radius-2.png?bas64);
+    }
+    .count-3 {
+        width: 2.9rem;
+        text-indent: .2rem;
+        background-image: url(./img/radius-3.png?bas64);
+    }
+
+    .icon-arrow {
+        margin-left: 1rem;
+    }
+}
+
+.m-list {
+    background-color: #fff;
+    border-width: 1px 0;
+    .border-image();
+
+    > a {
+        &:active > .item {
+            //background-color: @bg-color;
+        }
+    }
+
+    .line {
+        margin-bottom: -1px;
+        margin-left: 6.3rem;
+    }
+
+    .item {
+        display: flex;
+        align-items: center;
+        padding: .9rem 1.2rem;
+    }
+
+    .avatar {
+        position: relative;
+        display: block;
+        flex: 0 0 3.5rem;
+        width: 3.5rem;
+        height: 3.5rem;
+        margin-right: 1.2rem;
+        border-radius: 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        &>.verify {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                width: 1.2rem;
+                height: 1.2rem;
+                border: 1px solid #fff;
+                border-radius: 50%;
+                background-image:url(./img/verify_company.png?base64);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                z-index: 2;
+        }
+    }
+
+    .content {
+        display: block;
+        flex: 1;
+
+        .name {
+            .ellipse();
+            color: #333;
+            font-size: 1.5rem;
+            .official{
+                border:1px solid #ff4d58;
+                display: inline-block;
+                width: 2.4rem;
+                line-height: 1.5;
+                font-size: 0.9rem;
+                text-align: center;
+                color: #ff4d58;
+                margin-left: .3rem;
+                border-radius: 3px;
+                position: relative;
+            }
+        }
+
+        .date {
+            float: right;
+            color: #8c8c8c;
+            font-size: 1.2rem;
+        }
+
+        .msg {
+            position: relative;
+            .ellipse();
+            padding-right: 3rem;
+            color: #8c8c8c;
+            font-size: 1.2rem;
+        }
+
+        .icon-dot {
+            position: absolute;
+            right: 0;
+            top: .4rem;
+            width: .8rem;
+            height: .8rem;
+            background-image: url(./img/dot.png?base64);
+        }
+    }
+}

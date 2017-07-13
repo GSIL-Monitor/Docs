@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    {% set pageTitle = '活跃达人' %}
+    {% include "../partial/header.html" %}
+</head>
+<body>
+{% import "./tpl/user.html" as user %}
+<div class="js-user-container">
+    {% for item in users %}
+        {{ user.gen(item) }}
+        <div class="line"></div>
+    {% endfor %}
+</div>
+<div class="no-more">没有更多了</div>
+{% if users.length==0 %}
+    <div class="empty">真棒！你关注了所有的活跃达人！</div>
+{% endif %}
+<script>
+    window.__INIT_DATA__ = {{ INIT_STATE | dump | safe }};
+</script>
+</body>
+</html>

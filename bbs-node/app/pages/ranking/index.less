@@ -1,0 +1,71 @@
+@import "~common/styles/index";
+@import "~common/styles/v2/variable";
+@import "~common/styles/v2/index";
+@import "~common/styles/1px";
+@import "~components/weui/weui_patch.less";
+
+body{
+	background-color: #fff;
+	padding-bottom: 0;
+}
+
+.rankingPage{
+	.no_group_title{margin-top: 0;}
+}
+
+.cellContainer{
+	.line{
+		height: 1px;
+		margin-left: 4.6rem;
+	}
+}
+.rankCell{
+	display: flex;
+	align-items:center;
+	padding: 1.2rem 1.6rem 1.2rem 0;
+	.weui_cell_hd{
+		margin-right: 1rem;
+	}
+	.weui_cell_bd_title{
+		.ellipsis();
+	}
+	.weui_cell_primary{
+		flex:1;
+		min-width: 0;
+		color: @globalTextColor1;
+		font-size: 1.6rem;
+	}
+	.weui_cell_ft{
+		font-size: 1.3rem;
+		color: @globalTextColor3;
+	}
+	.imgWrap{
+		width: 4rem;
+		height: 4rem;
+		border-radius: 50%;
+		background: transparent url(~/common/img/avatar.png);
+		background-size: 4rem 4rem;
+		&:before{
+			border-radius: 50%;
+		}
+		img{
+			border-radius: 50%;
+		}
+	}
+	
+	.rank_index {
+	    width: 4.6rem;
+	    color: @globalTextColor3;
+	    font-size: 1.4rem;
+	    text-align: center;
+	}
+	.rank_1{
+		color: @primaryColor;
+	}
+	.rank_2{
+		color: #FEA54C;
+	}
+	.rank_3{
+		color: #FCD872;
+	}
+}

@@ -1,0 +1,105 @@
+@import "~common/base/foundation";
+@import "~common/base/icon";
+@import "~common/styles/v2/index";
+
+body{
+	 background: #fff;
+}   
+
+.recommend-post {
+    position: relative;
+    padding: 1rem 1.6rem;
+}
+
+.r-post-content {
+    margin: 1rem 0;
+    max-height: 6.4rem;
+    display: flex;
+    .post-content {
+        flex: 1;
+        overflow: hidden;
+        height: 6.4rem;
+        .post-title {
+            color: rgb(75, 79, 86);
+            font-size: 1.6rem;
+            line-height: 2rem;
+            font-weight: 400;
+            display: -webkit-box;
+    		-webkit-box-orient: vertical;
+    		overflow: hidden;
+        }
+        .line-clamp-1 {
+            -webkit-line-clamp: 1;
+        }
+        .line-clamp-2 {
+            -webkit-line-clamp: 2;
+        }
+    }
+    .image {
+        width: 8.8rem;
+        margin-left: 3rem;
+        height: 6.4rem;
+        overflow: hidden;
+        position: relative;
+        .cover {
+            width: 100%;
+            height: 100%;
+            background-image: url(~common/img/loadingBg.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+
+            .border-pixel;
+            .border-pixel(1px);
+        }
+    }
+    .r-post-bottom{
+    	position: absolute;
+    	bottom: 2rem;
+    	height: 1.2rem;
+    	line-height: 1.2rem;
+    	color:#c0c3cb;
+        left: 1.6rem;
+    	span + span{
+    		margin-left: 1rem;
+    	}
+    }
+}
+
+.empty-result{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: #90949C;
+    .empty-wrap{
+        display: flex;
+        justify-content: center;
+        .empty-logo{
+            background: url(img/empty.png) center no-repeat;
+            background-size: 8rem 5rem;
+            width: 8rem;
+            height: 5rem;
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+.favlist-bottom{
+    display: flex;
+    justify-content: center;
+    height: 4rem;
+    align-items: center;
+}
+.spinner-wrap{
+    display: flex;
+    justify-content:center;
+    aligin-item:center;
+    padding: 1rem 0;
+    .icon{
+        width: 20px;
+        height: 20px;
+    }
+}
+
+

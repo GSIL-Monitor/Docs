@@ -1,0 +1,28 @@
+{% for item in items %}
+<div class="js-reply item" data-reply-url="{{ item.replyUrl}}">
+    <a class="avatar lazy" data-src="{{ item.fromUserHead }}" href="/m/profile?need_zinfo=1&popup=1&uid={{ item.fromUserId }}&navTitle=个人主页">
+    </a>
+    <div class="content">
+        <h3 class="title">
+            <a class="name" href="/m/profile?need_zinfo=1&popup=1&uid={{ item.fromUserId }}&navTitle=个人主页">{{ item.fromUserNick }}</a>
+            <span class="date">{{ item.time }}</span>
+        </h3>
+        {% if item.msgType == 3 %}
+        <div class="quote">提到了你</div>
+        {% else %}
+        <div class="reply">{{ item.reply }}</div>
+        {% endif %}
+        <p class="message">
+            <a class="text" href="{{ item.postUrl }}">
+                {% if item.msgType == 3 %}
+                {{ item.reply }}
+                {% elif item.subType == 20 %}
+                {{ item.subject }}
+                {% else %}
+                {{ item.quoteReply }}
+                {% endif %}
+            </a>
+        </p>
+    </div>
+</div>
+{% endfor %}

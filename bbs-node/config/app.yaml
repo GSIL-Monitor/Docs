@@ -1,0 +1,4 @@
+server:
+    port: 8002
+    productionPort: 8080
+    devPort: 9002

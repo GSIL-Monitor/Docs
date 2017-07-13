@@ -1,0 +1,186 @@
+.clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.size(@height, @width) {
+  width: @width;
+  height: @height;
+}
+.square(@size) {
+  .size(@size, @size);
+}
+
+// Text overflow
+// -------------------------
+// Requires inline-block or block for proper styling
+.text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.usn() {
+  user-select:none;
+}
+
+// CSS image replacement
+// -------------------------
+// Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+.border-radius(@radius) {
+  border-radius: @radius;
+}
+
+// Background sizing
+.background-size(@size) {
+  background-size: @size;
+}
+
+
+// Box sizing
+.box-sizing(@boxmodel) {
+    box-sizing: @boxmodel;
+}
+
+// User select
+// For selecting text on the page
+.user-select(@select) {
+  user-select: @select;
+}
+
+// Centered container element
+.container-fixed() {
+  margin-right: auto;
+  margin-left: auto;
+  .clearfix();
+}
+
+// Opacity
+.opacity(@opacity) {
+  opacity: @opacity / 100;
+  filter: ~"alpha(opacity=@{opacity})";
+}
+
+// Drop shadows
+.box-shadow(@shadow) {
+  box-shadow: @shadow;
+}
+
+.form-control-focus() {
+  &:focus {
+    outline: 0;
+    border-color: @input-border-focus;
+  }
+}
+
+// Transitions
+.transition(@transition) {
+  transition: @transition;
+}
+.transition-delay(@transition-delay) {
+  transition-delay: @transition-delay;
+}
+.transition-duration(@transition-duration) {
+  transition-duration: @transition-duration;
+}
+
+// Transformations
+.rotate(@degrees) {
+  transform: rotate(@degrees);
+}
+
+.icon(){
+  display: inline-block;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+
+.checkmark(@color: #454545;@bg: #bcbcbc){
+  position: relative;
+  border-radius: 50%;
+  background-color: @bg;
+  border:1px solid @bg;
+  &:after{
+    content: '';
+    position: absolute;
+    width: 30%;
+    height: 60%;
+    left:50%;
+    top:50%;
+    margin-top: -2px;
+    border: solid @color;
+    border-width: 0 2px 2px 0;
+    transform: translate3d(-50%,-50%,0) rotate(45deg);
+  }
+}
+
+.cross(@color:#454545;@border:#454545;@bg:transparent){
+  position: relative;
+  border-radius: 50%;
+  border:1px solid @border;
+  background-color: @bg;
+  &:before,&:after{
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 1px;
+    background: @color;
+    left: 50%;
+    top: 50%;
+  }
+  &:before{
+    transform: translateX(-50%) rotate(-45deg);
+  }
+  &:after{
+    transform:  translateX(-50%) rotate(45deg);
+  }
+}
+
+.arrow(@border-color,@width) {
+  display: inline-block; 
+  width: @width;
+  height: @width;
+  background: transparent;
+  border-top: 2px solid @border-color;
+  border-left: 2px solid @border-color;
+  text-decoration: none;
+  color: transparent;
+  
+  &.prev {
+    transform: rotate(-45deg);  
+    left: 0;
+  }
+  
+  &.next {
+    transform: rotate(135deg);  
+    right: 0;
+  }
+
+  &.bottom {
+    transform: rotate(225deg); 
+  }
+}
+
+.clamp(@clamp){
+  display: -webkit-box;
+  -webkit-line-clamp: @clamp;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

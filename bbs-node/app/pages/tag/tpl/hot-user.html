@@ -1,0 +1,25 @@
+<div class="r-users-bos">
+    <div class="r-box-title">
+        <span class="title">活跃财友</span>
+        <span class="more"><a href="/app/hotusers?popup=1&need_zinfo=1&navTitle=活跃财友">更多</a></span>
+        <i class="right-icon"></i>
+    </div>
+    <div class="r-scroll-box">
+        {% for user in hotUsers %}
+            <div class="r-user border-1-pixel">
+                <a href="/m/profile?uid={{ user.uid }}&popup=1&need_zinfo=1&navTitle=个人主页" class="user-link">
+                    <div class="avatar" style="background-image: url({{ user.avatarUrl }});">
+                        {% if user.verifyUrl %}
+                            <i class="icon verify" style="background-image: url({{ user.verifyUrl }});"></i>
+                        {% endif %}
+                    </div>
+                    <div class="user-name">{{ user.username }}</div>
+                    <div class="user-label">{{ user.tag }}</div>
+                </a>
+                <a href="javascript:void(0)" data-uid="{{ user.uid }}" class="user-follow-btn js-follow">
+                    <i class="icon-plus"></i>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>

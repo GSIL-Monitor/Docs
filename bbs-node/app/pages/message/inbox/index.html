@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    {% include "../../partial/header.html" %}
+</head>
+<body>
+{% if type == 'error' %}
+<div class="m-empty">
+    <i class="icon icon-error"></i>
+    <p>{{ error }}</p>
+</div>
+{% else %}
+<input id="js-init-data" type="hidden" value="{{ initJson }}">
+<div class="m-message-warning">
+    <i class="icon icon-warning"></i>请谨慎对待陌生人发来的微信/QQ号/链接等，以免上当受骗
+</div>
+<div class="js-message m-message" data-count="{{ messages.length }}">
+    {% include "./tpl/item.html" %}
+</div>
+
+{% if showOfficialUser %}
+	<div class="m-action">
+		<div id="js-text" contenteditable class="text needsclick"></div>
+		<a id="js-send" class="send disabled">发送</a>
+	</div>
+{% endif %}
+{% endif %}
+</body>
+</html>

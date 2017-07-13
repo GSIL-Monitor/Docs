@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    {% set pageTitle = '个人主页' %}
+    {% include "../partial/header.html" %}
+</head>
+<body>
+
+<div class="top">
+    <div class="avatarWrap">
+        <div class="m-avatarBg"></div>
+
+        <div class="userAvatarOuter">
+            <div class="userAvatar ovh">
+                <div class="avatarImg avatar-big" 
+                    id="js-view-avatar"
+                    data-img="{{ personal.headImgUrlOrig }}"
+                    style="background-image: url({{ personal.headImgUrl }})">
+                    
+                </div>
+            </div>
+            {% if personal.verifyUrl %}
+                <div class="vIcon vip abs"></div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="userInfo">
+        <h2 class="tc c1">
+            <em class="vm">{{ personal.nickName }}</em>
+            {% if personal.sex == 1 %}
+                <i class="vIcon sexIcon male vm"></i>
+            {% elif personal.sex == 2 %}
+                <i class="vIcon sexIcon female vm"></i>
+            {% else %}
+            {% endif %}
+        </h2>
+        <div class="handles tc f14">
+            <a href="/app/follow?follow=1&popup=1&uid={{ personal.uid }}&need_zinfo=1&navTitle=粉丝和关注&platform={{platform}}" data-stat="myprofile_attention">关注 {{ personal.followCount }}</a>
+            <a href='/app/follow?fans=1&popup=1&uid={{ personal.uid }}&need_zinfo=1&navTitle=粉丝和关注&platform={{platform}}'  data-stat="myprofile_fans">粉丝 {{ personal.fansCount }}</a>
+        </div>
+        <div class="infoTxt">
+            {{ personal.bio }}
+        </div>
+    
+
+        {% if not personal.myPage %}
+        <div class="btnRow tc">
+            {% if personal.followed %}
+              <a href="javascript:;" class="btn btn-primary round btn-follow js-follow isFollowed" uid="{{ personal.uid }}">
+                  <span>关注</span>
+                  <span><i></i>已关注</span>
+              </a>
+            {% else %}
+              <a href="javascript:;" class="btn btn-primary round btn-follow js-follow" uid="{{ personal.uid }}" data-stat="myprofile_attention">
+                  <span>关注</span>
+                  <span><i></i>已关注</span>
+              </a>
+            {% endif %}
+
+
+            <a href="/app/message/inbox?targetUid={{ personal.uid }}&popup=1&need_login=1&needlogin&need_zinfo=1&navTitle=私信" class="btn btn-primary outlined round" data-stat="myprofile_hishome_click">私信</a>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+{% if isBBSApp and personal.tagCount != 0 %}
+<div class="middle" id="groupContent">
+    <div class="groupTitle pl16">
+        {{ "我" if personal.myPage else "Ta " }}的小组（{{ personal.tagCount }}） </div>
+    <div class="scrollerWrap">
+    <div id="Scroller" class="scroller clearfix">
+            {% for tag in personal.tags %}
+            {% set loopIndex = loop.index0 >= 5 %}
+            {% if not loopIndex  %}
+            <div class="figure" id="{{ tag.id }}" data-index="{{ loop.index0 }}">
+                <a class="figureLink db" href="/app/group?tagId={{tag.id}}&popup=1&need_zinfo=1">
+                <div class="imgWrap">
+                    <img src={{ tag.icon }} class="full">
+                </div>
+                <div class="figure-txt">{{ tag.name }}</div>
+                </a>
+            </div>
+            {% endif %}
+            {% endfor %}
+
+            {% if personal.tags.length > 5  %}
+                {% if not personal.myPage %}
+                <div class="more">
+                    <a class="db flex wux-center" href="nt://sdk-bbs2/otherGroup?uid={{ personal.uid }}" data-stat="myprofile_group_more">
+                        <div class="moreTxtWrap">
+                            <span class="arrow"> 
+                            </span>
+                            <div class="moreTxt tc">查看更多</div>
+                        </div>
+                    </a>
+                </div>
+                {% else %}
+                <div class="more">
+                    <a class="db flex wux-center" href="nt://sdk-bbs2/myGroup">
+                    <div class="moreTxtWrap">
+                        <span class="arrow">
+                            
+                        </span>
+                        <div class="moreTxt tc">查看更多</div>
+                    </div>
+                    </a>
+                </div>
+                {% endif %}    
+            {% endif %}
+    </div> 
+    </div>   
+</div>
+{% endif %}
+
+<div class="bottom">
+    {% import "./tpl/empty.html" as empty %}
+    {% if personal.posts.length == 0 %}
+        {{ empty.gen(personal) }}  
+    {% else %}
+    <div class="pl16 postListTitle">
+        {{ "我" if personal.myPage else "Ta " }}的帖子{% if personal.postCount != 0 %}（{{ personal.postCount }}）{% endif %}
+    </div>
+    
+    {% import "./tpl/post.html" as post %}
+    <div class="postListView" id="js-postListView">
+        {% for item in personal.posts %}
+            {{ post.gen(item) }}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+</div>
+
+<script>
+    window.__INIT_DATA__ = {{ INIT_STATE | dump | safe }}
+</script>
+</body>
+</html>

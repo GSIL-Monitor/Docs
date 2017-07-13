@@ -1,0 +1,393 @@
+@import "~common/styles/index";
+@import "~common/styles/v2/variable";
+@import "~common/styles/v2/index";
+@import "~common/styles/1px";
+
+body{
+	background-color: @globalBackgroundColor;
+	text-size-adjust: 100%;
+	padding-bottom: 0;
+}
+
+[v-cloak]{
+	display: none;
+}
+
+.pl16{
+	padding-left: 1.6rem;
+}
+
+.top{
+	padding-bottom: 2.4rem;
+	background-color: @white;
+	margin-bottom: 1.2rem;
+}
+.m-avatarBg{
+	position: relative;
+    width: 100%;
+    padding-top: 34.66%;
+    height: 0;
+    background-position: 50% 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image:url(./image/banner.png);
+    font-weight: 700;
+    display: flex;
+}
+
+.userAvatarOuter{
+	margin: -40px auto 0;
+	position: relative;
+	width: 80px;
+	height: 80px;
+	.vip{
+		width: 1.8rem;
+		height: 1.8rem;
+		bottom:0px;
+		right:4px;
+		background:url(./image/vip.png) left top no-repeat;
+		background-size: 1.8rem 1.8rem;
+	}
+}
+.userAvatar{
+	border-radius: 50%;
+	width: 80px;
+	height: 80px;
+	border:2px solid #fff;
+	background-color: #fff;
+	z-index: 2;
+	.avatarImg{
+		width: 76px;
+		height: 76px;
+		background-size: 76px 76px;
+	}
+}
+
+
+.infoTxt{
+	font-size: 1.2rem;
+	color: @globalTextColor3;
+	text-align: center;
+	max-width: 28rem;
+	margin: 0.9rem auto 0;
+	line-height: 1.5;
+}
+
+.sexIcon{
+	display: inline-block;
+	&.male{
+		background:url(./image/male.png);
+		background-size: 14px 14px;
+		width:14px;
+		height:14px;
+	}
+	&.female{
+		background:url(./image/female.png);
+		background-size: 11px 15px;
+		width:11px;
+		height:15px;
+	}
+}
+
+.userInfo{
+	margin-top: 1.6rem;
+	h2{font-weight: 500;}
+}
+.handles{
+	margin-top: 0.9rem;
+	line-height: 1;
+	font-size: 1.4rem;
+	a{
+		display: inline-block;
+		padding-left: 1rem;
+		color:@globalTextColor3;
+		&:active{
+			color:@globalTextColor3;
+		}
+	}
+	a:first-child{
+		padding-right: 1rem;
+		padding-left: 0;
+		border-right: 1px solid @globalTextColor3;
+	}
+}
+
+.btnRow{
+	margin-top: 2.1rem;
+	font-size: 0;
+	.btn{
+		font-size: 1.4rem;
+		width: 9rem;
+		line-height: 3.2rem;
+		height: 3.2rem;
+		border-radius: 1.6rem;
+		padding:0;
+	}
+	.btn{
+		margin-right: 2.4rem;
+	}
+	.btn:last-child{
+		margin-right: 0;
+	}
+}
+
+.middle{
+	margin-bottom: 1.2rem;
+	background-color: #fff;
+	padding-top: 1.5rem;
+	padding-bottom: 0.6rem;
+}
+
+.groupTitle{
+	font-size: 1.4rem;
+	line-height: 2.0rem;
+	color: @globalTextColor2;
+	margin-bottom: 1.5rem;
+}
+.scrollerWrap{
+	overflow: hidden;
+}
+.scroller{
+	margin-left: 1rem;
+	padding-bottom: 0.6rem;
+	width: 1000px;
+	.figure{
+		font-size: 1rem;
+		float:left;
+		width: 7.2rem;
+		&:last-child{
+			margin-right: 0;
+		}
+		.imgWrap{
+			margin-left:auto;
+			margin-right: auto;
+			width: 6rem;
+			height: 6rem;
+		}
+	}
+	.more{
+		background-color: #f6f7f9;
+		font-size: 1rem;
+		float:left;
+		width: 6rem;
+		margin-left: 0.6rem;
+		height: 8.4rem;
+		color: @globalTextColor3;
+		>a{
+			color: @globalTextColor3;
+		}
+		.flex{
+			height: 100%;
+		}
+		.moreTxtWrap{
+			width: 6rem;
+			text-align: center;
+		}
+		.arrow{
+			width: 2.2rem;
+			height: 2.2rem;
+			display: inline-block;
+			border-radius: 50%;
+			background-color: #dcdee2;
+			text-align: center;
+			line-height: 2.2rem;
+			margin-bottom: 1rem;
+			background:url('./image/arrow.png');
+			background-size: 2.2rem 2.2rem;
+			
+		}
+	}
+	.avatarWrap{
+		width: 6rem;
+		height: 6rem;
+		margin: 0 auto 0.6rem;
+	}
+	.figure-txt{
+		color: @globalTextColor1;
+		line-height: 1.4rem;
+		height: 1.4rem;
+		text-align: center;
+		margin-top: 1rem;
+		max-width: 7.2rem;
+		.ellipsis();
+	}
+}
+
+.postList{
+	padding-top: 1.4rem;
+	padding-bottom: 1.4rem;
+	.topRow{
+		a,span{display: block;height:2.4rem;line-height: 2.4rem;}
+		.link{
+			padding-right: 1.6rem;
+		}
+	}
+	.avatarWrap{
+		margin-right: 0.8rem;
+		img{
+			width: 4rem;
+			height: 4rem;
+			border-radius: 50%;
+			display: inline-block;
+			overflow: hidden;
+		}
+		.vip{
+			width: 1.4rem;
+			height:1.4rem;
+			bottom:0px;
+			right:-3px;
+			background:url(./image/vip2.png) left top no-repeat;
+			background-size: 1.4rem 1.4rem ;
+		}
+	}
+}
+
+.postListTitle{
+	margin-bottom: 0.2rem;
+}
+
+.post-body{
+	line-height: 1.5;
+	.post-title{
+		color: @globalTextColor1;
+		font-size: 1.7rem;
+		margin-bottom: 0.4rem;
+	}
+	.post-detail{
+		font-size: 1.5rem;
+		color: @globalTextColor3;
+	}
+}
+
+.post-footer{
+	line-height: 1.6rem;
+	height: 1.6rem;
+	font-size: 1.3rem;
+	color: @globalTextColor4;
+	margin-top: 1rem;
+	*{
+		vertical-align: middle;
+	}
+}
+
+.jing{
+	font-size: 1.1rem;
+	display: inline-block;
+	width: 1.6rem;
+	height: 1.6rem;
+	border-radius: 0.3rem;
+	background-color: #FAD972;
+	color: #fff;
+	text-align: center;
+	margin-right: 0.5rem;
+}
+
+.bottom{
+	background-color: @white;
+	padding-top: 2rem;
+}
+
+.emptyView{
+	text-align: center;
+	padding-top: 8rem;
+	padding-bottom: 10rem;
+	.btnRow{
+		margin-top: 4rem;
+	}
+	.imageWrap{
+		width: 10.5rem;
+		height: 6.4rem;
+		display: inline-block;
+		margin-bottom: 1.8rem;
+	}
+	.emptyTxt{
+		color: @globalTextColor3;
+		font-size: 1.3rem;
+	}
+}
+
+.clamp{
+	display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.line-clamp-1 {
+    -webkit-line-clamp: 1;
+}
+.line-clamp-2 {
+    -webkit-line-clamp: 2;
+}
+
+.post-picture{
+	margin-top: 0.8rem;
+	.imgBox{
+		display: inline-block;
+	}
+}
+
+.thumb {
+    width: 8rem;
+    margin-top: .8rem;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(image/post-img.png?base64);
+
+    &:after {
+        content: '';
+        display: block;
+        padding-top: 75%;
+    }
+}
+
+.listViewDone{
+	text-align: center;
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	color: @globalTextColor3;
+	font-size: 1.3rem;
+	background-color: @globalBackgroundColor;
+	height: 5rem;
+	line-height: 3rem;
+	.wux-divider{
+		display: inline-block;
+		font-size: 1.4rem;
+		padding-left: 1.4rem;
+		padding-right: 1.4rem;
+		margin-top: 1.5rem;
+		margin-bottom: 1.5rem;
+		span{
+			padding:0 1.4rem;
+			top:-0.7rem;
+			line-height: 1;
+			display: inline-block;
+			color:@globalTextColor4;
+			background-color: @globalBackgroundColor;
+		}
+	}
+}
+
+.btn-follow{
+	span:first-child{
+		display: inline-block;
+	}
+	span:last-child{
+		display: none;
+	}
+	&.isFollowed{
+		background-color: #f2f2f3;
+		color: #90949c;
+		border-color: #f2f2f3;
+		span:last-child{
+		display: inline-block;
+	}
+		span:first-child{
+			display: none;
+		}
+	}
+	.vm{
+		margin-left: 2px;
+	}
+}

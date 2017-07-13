@@ -1,0 +1,8 @@
+{
+	"plugins": {
+	  "autoprefixer": {
+	    "remove": false,
+	    "browsers": ['Android > 2.0', 'iOS > 5.0' ]
+	  }
+	}
+}

@@ -1,0 +1,217 @@
+@import "~common/base/foundation";
+
+.m-profile {
+    margin-bottom: 1.6rem;
+    background-color: #fff;
+
+    > a:active .user {
+        //background-color: @bg-color;
+    }
+
+    .user {
+        display: flex;
+        align-items: center;
+        padding: 1.2rem 1.4rem;
+        border-width: 0 0 1px 0;
+        .border-image();
+    }
+
+    .avatar {
+        position: relative;
+        display: block;
+        width: 5.3rem;
+        height: 5.3rem;
+        border-radius: 50%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+
+        &.default {
+            background-image: url(./img/180.gif?base64) !important;
+            background-size: contain;
+
+            > .verify {
+                display: none;
+            }
+        }
+
+        > .verify {
+            position: absolute;
+            right: -2px;
+            bottom: -2px;
+            width: 1.7rem;
+            height: 1.7rem;
+            overflow: hidden;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+    }
+
+    .name {
+        display: block;
+        flex: 1;
+        margin-left: 1.2rem;
+        color: #333;
+        font-size: 1.7rem;
+        font-style: normal;
+    }
+
+    .icon-arrow {
+        display: block;
+    }
+
+    .stats {
+        display: flex;
+        align-items: center;
+        padding: .9rem 0;
+        line-height: 1;
+        border-width: 0 0 1px 0;
+        .border-image();
+
+        > .item {
+            position: relative;
+            display: block;
+            width: percentage(1/3);
+            text-align: center;
+            color: #8c8c8c;
+            font-size: 1.2rem;
+
+            &:not(:last-child):after {
+                content: '';
+                position: absolute;
+                top: .2rem;
+                right: 0;
+                bottom: .2rem;
+                border-right: 1px solid @border-color;
+            }
+        }
+
+        em {
+            display: block;
+            margin-bottom: .4rem;
+            color: #333;
+            font-size: 1.5rem;
+            font-style: normal;
+        }
+    }
+}
+
+.m-menu {
+    margin-bottom: 1.6rem;
+    background-color: #fff;
+    border-width: 1px 0;
+    .border-image();
+
+    > a {
+        &:active > .item {
+            //background-color: @bg-color;
+        }
+    }
+
+    .line {
+        margin-left: 4.6rem;
+    }
+
+    .item {
+        display: flex;
+        align-items: center;
+        padding: 1.2rem 1.4rem;
+    }
+
+    .title {
+        display: block;
+        flex: 1;
+        margin-left: 1.4rem;
+        color: #333;
+        font-size: 1.5rem;
+        font-style: normal;
+        line-height: 1.35;
+    }
+
+    .text {
+        display: block;
+        margin-right: 1rem;
+        color: #b6bbc0;
+        font-size: 1.4rem;
+    }
+
+    .count {
+        position: relative;
+        display: block;
+        height: 1.8rem;
+        margin-right: 1rem;
+        color: #fff;
+        font-size: 1.1rem;
+        line-height: 1.8rem;
+        text-align: center;
+        background-size: cover;
+    }
+
+    .count-1 {
+        width: 1.8rem;
+        background-image: url(./img/radius-1.png?bas64);
+    }
+    .count-2 {
+        width: 2.4rem;
+        background-image: url(./img/radius-2.png?bas64);
+    }
+    .count-3 {
+        width: 2.9rem;
+        text-indent: .2rem;
+        background-image: url(./img/radius-3.png?bas64);
+    }
+}
+
+.icon-sign,
+.icon-message,
+.icon-fav,
+.icon-meeting,
+.icon-block,
+.icon-charge,
+.icon-star {
+    display: block;
+    width: 1.8rem;
+    height: 1.8rem;
+    background-position: center;
+}
+
+.icon-sign,
+.icon-charge {
+    background-size: 1.7rem auto;
+}
+
+.icon-message,
+.icon-block {
+    background-size: 1.6rem auto;
+}
+
+.icon-block {
+    background-image: url(./img/block.png?base64);
+}
+
+.icon-charge {
+    background-image: url(./img/charge.png?base64);
+}
+
+.icon-fav {
+    background-image: url(./img/fav.png?base64);
+}
+
+.icon-star {
+    background-image: url(./img/star.png?base64);
+}
+
+.icon-meeting {
+    background-image: url(./img/meeting.png?base64);
+}
+
+.icon-message {
+    background-image: url(./img/message.png?base64);
+}
+
+.icon-sign {
+    background-image: url(./img/sign.png?base64);
+}

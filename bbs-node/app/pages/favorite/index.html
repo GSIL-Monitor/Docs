@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+	{% set pageTitle = '我的收藏' %}
+    {% include "../partial/header.html" %}
+</head>
+<body>
+
+    <div class="list-container bg-white" id="favorite-container">
+    	{% if data and data.length>0  %}
+			{% for fav in data %}
+			<div class="recommend-post bg-white js-recommend-post ">
+			    <a href="{{fav.url}}">
+			        <div class="r-post-content">
+			            <div class="post-content">
+			                <div class="post-title line-clamp-2">{{fav.title}}</div>
+			            </div>
+
+			            {% if fav.picture %}
+			            <div class="image">
+			                <div class="cover lazy" data-src="{{ fav.picture }}"> </div>
+			            </div>
+			            {% endif %}
+
+			            <div class="r-post-bottom">
+				            <span>回复 {{fav.replies}}</span>
+				            <span>赞 {{fav.likes}}</span>
+				        </div>
+			        </div> 
+			    </a>
+			</div>
+			<div class="line"></div>
+			{% endfor %}
+		{% else %}
+			{% include "./tpl/empty.html" %}
+		{% endif %}
+
+   	</div>
+
+
+
+
+
+
+	
+    
+   
+<script>
+    window.__INIT_DATA__ = {{ INIT_STATE | dump | safe }}
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<div class="js-mask mask"></div>
+<div class="content">
+    {% if fav %}
+    <div class="js-fav menu menu-fav menu-fav-1">已收藏</div>
+    {% else %}
+    <div class="js-fav menu menu-fav">收藏</div>
+    {% endif %}
+
+    {% if orderasc == 0 %}
+    <div data-stat="threaddetail_operating_reverse" class="js-order menu menu-order">倒序查看</div>
+    {% else %}
+    <div data-stat="threaddetail_operating_reverse" class="js-order menu menu-order menu-order-1">正序查看</div>
+    {% endif %}
+    {% if isQianTang %}
+    <a class="js-btn-discuss menu menu-feed">意见反馈</a>
+    {% endif %}
+    <a class="menu menu-report" href="/app/report/?need_login=1&popup=1&tid={{ tid }}&navTitle=举报">举报</a>
+</div>

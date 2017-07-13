@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+	{% set pageTitle = '公开课' %}
+    {% include "../partial/header.html" %}
+</head>
+<body>
+    <!--轮播开始-->
+    {% if banners and banners.length>0 %}
+    <div class="r-banners bg-white">
+        <div class="banners-container">
+            <div class="swiper-wrapper">
+                {% for banner in banners %}
+                    <div class="swiper-slide">
+                        <a data-key="{{ loop.index0 }}" href="{{ banner.url }}">
+                            {% if loop.index0 == 1 %}
+                                <img src="{{ banner.iconUrl }}">
+                            {% else %}
+                                <img data-src="{{ banner.iconUrl }}" class="swiper-lazy">
+                            {% endif %}
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            {% if banners.length>1 %}
+            <div class="swiper-pagination"></div>
+            {% endif %}
+        </div>
+    </div>
+	{% endif %}
+	<!--轮播结束-->
+   
+	<!--公开课的课程分类开始-->
+	{% if index_list and index_list.data.category.length>0 %}
+	<div class="les-container bg-white">
+	    {% for category in index_list.data.category %}
+		<a class="les-item db" data-cid="{{ category.id }}" href="/app/lesson/lessonlist?cid={{ category.id }}&need_zinfo=1">
+            <i class="les-icon"></i>
+            <span class="les-name">{{ category.name }}</span>
+        </a> 
+		{% endfor %}
+	</div>
+	{% endif %}
+	<!--公开课的课程分类结束-->
+    
+    <!--对应分类推荐的课程开始-->
+    {% if index_list and index_list.data.lesson.length>0 %}
+    {% for lessons in index_list.data.lesson %}
+    <div class="lessons-container bg-white">
+        	<div class="r-title">
+        	    <p class="title-bar"></p><span>{{lessons.name}}</span>
+        	</div>
+	        {% for les in lessons.lessonList %}
+			<a href="{{les.url}}" class="lessonListItem" data-cid="{{ lessons.id }}" data-index="{{ loop.index0 }}">
+					<div class="r-lesson-content">
+					    <div class="content">
+					        <div class="line-clamp-{{les.lineClamp}} lesson-title">{{les.title}}</div>
+					        <span class="lesson-level">{{les.tag}}<i class="level-l"></i>
+                                <i class="level-r"></i>
+                            </span>
+					    </div>
+
+					    <div class="image">
+					    	<div class="cover lazy" data-src="{{les.picUrl}}"></div>
+					    </div>
+					</div>
+			</a>
+			<div class="line"></div>
+			{% endfor %}
+			<a class="more-lesson"  data-cid="{{ lessons.id }}" href="/app/lesson/lessonlist?cid={{lessons.id}}"><span>更多课程</span><i class="icon icon-arrow"></i></a>
+    </div>	
+    {% endfor %}
+    {% endif %}
+	<!--对应分类推荐的课程结束-->
+
+</body>
+</html>

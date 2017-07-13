@@ -1,0 +1,35 @@
+.row-full{
+  display: block;
+}
+
+textarea{
+  height:auto;
+}
+input,select,textarea {
+  outline: none;
+}
+
+.icon-clear{
+    display: inline-block;
+    position: relative;
+    width:24px;
+    line-height: 24px;
+    background-color: #666;
+    border-radius: 50%;
+    background-color: #e7e7e7;
+    &:before,&:after{
+      content:"";
+      width:12px;
+      height: 2px;
+      position: absolute;
+      left:50%;
+      top:50%;
+      background-color: #999;
+    }
+    &:before {
+      transform: translate3d(-50%,-50%,0) rotate(45deg);
+    }
+    &:after {
+      transform: translate3d(-50%,-50%,0) rotate(-45deg);
+    }
+  }

@@ -1,0 +1,56 @@
+{% macro gen(item, page) %}
+<div class="postList wux-1px-b">
+    <div class="box media">
+        <a class="fl avatarWrap rel db" href="/app/home?uid={{ item.uid }}&popup=1&need_login=1&needlogin&need_zinfo=1&navTitle=个人主页" class="link f1">
+            <img src="{{ item.headImgUrl }}" class="responsive">
+            {% if item.verifyUrl %}
+            <div class="vIcon vip abs"></div>
+            {% endif %}
+        </a>
+        <div class="media-body">
+            <div class="flex topRow">
+                <a href="/app/home?uid={{ item.uid }}&popup=1&need_login=1&needlogin&need_zinfo=1&navTitle=个人主页" class="link f1 ellipsis">{{ item.nickName }}</a>
+                <span class="moment c4 f12">{{ item.friendTime }}</span>
+            </div>
+            <a href="{{ item.threadUrl }}" class="db post-body" data-stat='myprofile_post'>
+                
+                {% if item.subject %}
+                <div class="post-title clamp line-clamp-2">
+                    {{ item.subject }}
+                </div>
+                {% endif %}
+                
+                {% if item.messagePreview %}
+                <div class="post-detail clamp line-clamp-{{ item.lineClamp }}">
+                    {{ item.messagePreview }}
+                </div>
+                {% endif %}
+
+                {% if item.picture %}
+                <div class="thumb lazy" data-src="{{ item.picture }}"></div>
+                {% endif %}
+                <div class="post-footer">
+                    {% if item.digest > 0 %}
+                    <span class="jing">精</span>
+                    {% endif %}
+                    <span>回复 {{ item.replies }}</span>
+                    <span>赞 {{ item.likes }}</span>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+{% endmacro %}
+
+{% if items.length >0 %}
+    {% for item in items %}
+    {{ gen(item,page) }}
+    {% endfor %}
+{% else %}
+    <div class="listViewDone">
+        <span class="wux-divider"><span>我是有底线的</span></span>
+    </div>
+{% endif %}
+

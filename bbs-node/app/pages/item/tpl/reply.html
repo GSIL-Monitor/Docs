@@ -1,0 +1,46 @@
+{% macro gen(item, page) %}
+<div class="js-reply item" data-pid="{{ item.pid }}">
+    {% if not page %}
+    <a class="icon reply" href="/m/threadReply?tid={{ item.tid }}&repquote={{ item.pid }}&need_login=1&popup=1&navTitle=添加回复"></a>
+    {% endif %}
+    <a data-stat="threaddetail_replyer_userinfo" href="/app/home?uid={{ item.author.uid }}&popup=1&need_zinfo=1&navTitle=个人主页" class="reply__item">
+        <div class="avatar lazy" data-src="{{ item.author.headImgUrl }}">
+            {% if item.author.verifyUrl %}
+            <i class="icon verify lazy" data-src="{{ item.author.verifyUrl }}"></i>
+            {% endif %}
+        </div>
+        <div class="name">{{ item.author.nickName }}</div>
+    </a>
+    {% if not page %}
+        <div class="time">{{ item.floor }}楼&nbsp;&nbsp;{{ item.replyTime }}</div>
+    {% endif %}
+    <div class="content" data-pid="{{ item.pid }}">
+        {% if item.quote %}
+        <div class="quote">{{ item.quote.nickName }}：{{ item.quote.message | safe }}</div>
+        {% endif %}
+
+        <div class="message">{{ item.message | safe }}</div>
+
+        {% if item.images.length > 0 %}
+        <div class="images images-count-{{ item.images.length }}">
+            {% for img in item.images %}
+            <a class="anchor js-view-large {{ 'more' if loop.index == 4 and loop.length > 4 }}"
+               href="/forum.php?mod=viewthread&tid={{ item.tid }}&aid={{ img.aid }}&from=album&page=&popup=1"
+               data-img="{{ img.url }}">
+                {% if loop.length == 1 %}
+                <img class="cover lazy" data-src="{{ img.url }}?imageView2/0/w/200/interlace/1" />
+                {% else %}
+                <div class="img lazy" data-src="{{ img.url }}?imageView2/0/w/200/interlace/1"></div>
+                {% endif %}
+            </a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endmacro %}
+
+{% for item in items %}
+{{ gen(item, page) }}
+<div class="line"></div>
+{% endfor %}

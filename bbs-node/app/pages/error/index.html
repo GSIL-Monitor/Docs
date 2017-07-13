@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    {% include "../partial/header.html" %}
+</head>
+<body>
+<div class="m-empty">
+    <i class="icon icon-{{ icon | default('error') }}"></i>
+    <p>{{ error | default('sorry，暂时无法连接') }}</p>
+</div>
+<script>
+    window.__INIT_DATA__ = [{{ INIT_DATA | safe }}][0];
+</script>
+</body>
+</html>

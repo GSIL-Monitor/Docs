@@ -1,0 +1,106 @@
+@import "~common/styles/index";
+@import "~common/styles/v2/variable";
+@import "~common/styles/v2/index";
+@import "~common/styles/1px";
+
+body{
+	padding-bottom: 0;
+}
+.w0{
+	width: 0;
+}
+.followItem{
+	padding: 1rem 1.2rem;
+	position: relative;
+	background-color: #fff;
+	.avatar{
+		width: 5rem;
+		height: 5rem;
+		border-radius: 50%;
+		margin-right: 1.2rem;
+		position: relative;
+		background-size: 100%;
+		.verify{
+			position: absolute;
+			width: 1.4rem;
+			height: 1.4rem;
+			bottom:0rem;
+			right:0;
+			background:url(~common/img/vip.png) left top no-repeat;
+			background-size: 1.4rem 1.4rem;
+		}
+	}
+	.btn-primary:active{
+		background-color: transparent;
+    	color: @primaryColor;
+    	border-color: @primaryColor;
+	}
+	.wux-1px-b{
+		position: absolute;
+		right:0;
+		bottom:0;
+		left:7.4rem;
+	}
+	.nameRow{
+		font-size: 1.6rem;
+		color: @globalTextColor1;
+		line-height: 1.2;
+		margin-bottom: 0.7rem;
+		padding-right: 2rem;
+		.ellipsis();
+	}
+	.bottomRow{
+		font-size: 1.3rem;
+		color:@globalTextColor3;
+	}
+	.btn.followed{
+		background-color: #f2f2f3;
+		color:@globalTextColor3;
+		border-color:#f2f2f3;
+	}
+	.btn.eq-wh{
+		width: 6.4rem;
+		height: 2.8rem;
+	}
+	
+}
+.divider{
+	padding-left: 1.2rem;
+	font-size: 1.3rem;
+	line-height: 2.3rem;
+	color:@globalTextColor3;
+}
+
+.followTabBar{
+	position: fixed;
+	left:0;
+	top:0;
+	right: 0;
+	z-index: 9;
+	.wux-tab{
+		border-bottom: 1px solid @globalBackgroundColor;
+	}
+}
+
+.tabs{
+	padding-top: 44px;
+}
+
+.emptyView{
+	text-align: center;
+	padding-top: 8rem;
+	padding-bottom: 10rem;
+	.btnRow{
+		margin-top: 4rem;
+	}
+	.imageWrap{
+		width: 10.5rem;
+		height: 6.4rem;
+		display: inline-block;
+		margin-bottom: 1.8rem;
+	}
+	.emptyTxt{
+		color: @globalTextColor3;
+		font-size: 1.3rem;
+	}
+}

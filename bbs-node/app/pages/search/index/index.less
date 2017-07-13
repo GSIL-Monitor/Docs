@@ -1,0 +1,252 @@
+@import "~common/base/foundation";
+
+.m-search-form {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 4.5rem;
+    padding: .8rem 1rem;
+    background-color: #fff;
+    border-width: 0 0 1px 0;
+    .border-image();
+
+    .label {
+        display: block;
+        position: relative;
+        transform: translateZ(0);
+        width: percentage(512 / (640 - 40));
+    }
+
+    .icon-search {
+        position: absolute;
+        left: 1rem;
+        top: .8rem;
+        width: 1.3rem;
+        height: 1.3rem;
+    }
+
+    .icon-close {
+        display: none;
+        position: absolute;
+        right: 0.4rem;
+        top: 0.2rem;
+        width: 2.4rem;
+        height: 2.4rem;
+        background-size: 1.4rem 1.4rem;
+    }
+
+    .search-input {
+        width: 100%;
+        height: 2.8rem;
+        padding-left: 2.6rem;
+        color: #333;
+        font-size: 1.4rem;
+        background-color: @bg-color;
+        border-radius: .4rem;
+        appearance: none;
+        border: none;
+        outline: none;
+
+        &::-webkit-search-decoration,
+        &::-webkit-search-cancel-button {
+            -webkit-appearance: none !important;
+        }
+    }
+
+    .cancel {
+        display: block;
+        flex: 1;
+        font-size: 1.5rem;
+        line-height: 2.8rem;
+        text-align: right;
+        color: black;
+    }
+}
+
+.m-search-result {
+    margin-top: 4.5rem;
+    padding-bottom: 5rem;
+
+    .f-title {
+        padding: 0 1.2rem 0 1.6rem;
+        color: #90949c;
+        font-size: 1.3rem;
+        line-height: 3rem;
+        border-width: 0 0 1px 0;
+        .border-image();
+    }
+
+    em {
+        color: #4267b2;
+        font-style: normal;
+    }
+
+    .icon-arrow {
+        display: block;
+        width: .7rem;
+        height: 1.3rem;
+    }
+
+    .more {
+        display: block;
+        padding: 1.5rem 0;
+        font-size: 1.4rem;
+        color: #90949c;
+        text-align: center;
+        height: 4.4rem;
+        &:hover {
+            //background-color: @bg-color;
+        }
+
+        .icon-arrow {
+            display: inline-block;
+            margin-left: .6rem;
+            vertical-align: -.1rem;
+        }
+    }
+
+    .line {
+        margin-left: 1.6rem;
+        margin-bottom: -1px;
+    }
+}
+
+.m-users {
+    background-color: #fff;
+    border-width: 0 0 1px 0;
+    .border-image();
+
+    .item {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        padding: 1.2rem 1.6rem;
+        height: 6rem;
+        &:active {
+            //background-color: @bg-color;
+        }
+
+        .avatar {
+            display: block;
+            width: 4rem;
+            height: 4rem;
+            margin-right: 1.2rem;
+            border-radius: 50%;
+            overflow: hidden;
+            background-position: center;
+            background-size: contain;
+        }
+
+        .info {
+            flex: 1;
+        }
+
+        .name {
+            color: #333;
+            font-size: 1.6rem;
+        }
+
+        .stats {
+            margin-top: .5rem;
+            font-size: 1.2rem;
+            color: @gray;
+        }
+    }
+}
+
+.m-posts {
+    background-color: #fff;
+    border-width: 0 0 1px 0;
+    margin-top: 1rem;
+    .border-image();
+
+    .item {
+        display: block;
+        padding: 2rem 1.6rem 1.6rem 1.6rem;
+
+        &:active {
+            //background-color: @bg-color;
+        }
+
+        .title {
+            color: #333;
+            font-size: 1.5rem;
+            .ellipse();
+        }
+
+        .content {
+            margin: 1rem 0 1.2rem 0;
+            color: @gray;
+            font-size: 1.2rem;
+            .word-break();
+        }
+        .replies-likes{
+            color:#c0c3cb;
+            font-size: 1.1rem;
+            span + span{
+                margin-left: 1.2rem;
+            }
+        }
+    }
+}
+
+.m-popup-history {
+    position: fixed;
+    left: 0;
+    top: 4.5rem;
+    bottom: 0;
+    width: 100%;
+    overflow: auto;
+    .list {
+        background-color: #fff;
+    }
+
+    .item {
+        color: #333;
+        font-size: 1.5rem;
+        padding: 1.7rem 1.6rem;
+
+        &:active {
+            //background-color: @bg-color;
+        }
+    }
+
+    .line {
+        margin-left: 1.6rem;
+    }
+
+    .clear {
+        color: @gray;
+        font-size: 1.5rem;
+        padding: 1.5rem;
+        text-align: center;
+        background-color: #fff;
+        border-width: 0 0 1px 0;
+        .border-image();
+    }
+}
+//搜索不到
+
+.js-not-found{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    img{
+        width: 11rem;
+    }
+    .not-found-text{
+        font-size: 1.4rem;
+        color: #90949c;
+        text-align: center;
+        margin-top: 2.4rem;
+    }
+}
+
+

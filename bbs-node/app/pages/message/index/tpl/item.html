@@ -1,0 +1,29 @@
+{% for item in items %}
+<a href="/app/message/inbox?popup=1&need_login=1&targetUid={{ item.fromUid }}&navTitle={{ item.fromUserName }}">
+    <div class="js-message item">
+        <div class="avatar lazy" data-src="{{ item.fromUserHead }}">
+            {% if item.official %}
+            <i class="icon verify"></i>
+            {% endif %}
+        </div>
+        <div class="content">
+            <h3 class="name">
+                <span class="vm">{{ item.fromUserName }}</span>
+                {% if item.official %}
+                    <span class="vm official">官方</span>
+                {% endif %}
+                <span class="date">{{ item.modifyTime }}</span>
+            </h3>
+            <p class="msg">
+                {{ item.message }}
+                {% if item.unread > 0 %}
+                <i class="icon icon-dot"></i>
+                {% endif %}
+            </p>
+        </div>
+    </div>
+    {% if not loop.last %}
+    <div class="line"></div>
+    {% endif %}
+</a>
+{% endfor %}

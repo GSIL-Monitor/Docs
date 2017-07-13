@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    {% set pageTitle = '挖财活跃之星' %}
+    {% include "../../partial/header.html" %}
+</head>
+<body>
+
+<div class="page">
+    
+    <div class="content">
+        <div class="m-banner">
+            <div class="figure" style='background-image: url("{{ data.banner }}")'></div>
+            <!-- <img src="{{ data.banner }}" class="responsive"> -->
+        </div> 
+        
+         
+        <div class="m-introduction">
+            <div class="m-container">
+                <div class="m-divider rel m-content">
+                    {{ data.introduce }}
+                </div>
+            </div>
+        </div>
+        
+        <div class="starLists first">
+            <div class="m-container rel">
+                <div class="bg1"></div>
+                <h3>点赞之星</h3>
+                <div class="subText">TA们在这一周点了超多赞，也去赞下TA们吧</div>
+                <ul class="m-divider rel">
+                    {% for item in data.normal1UserList %}
+                        <li class="starItem">
+                            <a href="{{item.homePageUrl}}" class="db">
+                                <span class="avatarWrap rel">
+                                    <img src="{{item.headImgUrl}}" class="responsive">
+                                    <span class="hot"></span>
+                                </span>
+                                <p class="nickname">{{item.nickName}}</p>
+                            </a>
+                            {% if item.follow %}
+                              <a href="" class="btn btn-follow js-follow isFollowed" uid={{ item.uid }}>
+                                  <span>+&nbsp;关注</span>
+                                  <span><i></i>已关注</span>
+                              </a>
+                            {% else %}
+                              <a href="" class="btn  btn-follow js-follow" uid={{ item.uid }}>
+                                  <span>+&nbsp;关注</span>
+                                  <span><i></i>已关注</span>
+                              </a>
+                            {% endif %}
+                            
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="starLists second">
+            <div class="m-container">
+                <h3>关注之星</h3>
+                <div class="subText">TA们在这一周关注了很多财友，一起互动起来吧</div>
+                <ul class="m-divider rel">
+                    {% for item in data.normal2UserList %}
+                        <li class="starItem">
+                            <a href="{{item.homePageUrl}}" class="db">
+                                <span class="avatarWrap rel">
+                                    <img src="{{item.headImgUrl}}" class="responsive">
+                                    <span class="hot"></span>
+                                </span>
+                                <p class="nickname">{{item.nickName}}</p>
+                            </a>
+                            {% if item.follow %}
+                              <a href="" class="btn btn-follow js-follow isFollowed" uid={{ item.uid }}>
+                                  <span>+&nbsp;关注</span>
+                                  <span><i></i>已关注</span>
+                              </a>
+                            {% else %}
+                              <a href="" class="btn  btn-follow js-follow" uid={{ item.uid }}>
+                                  <span>+&nbsp;关注</span>
+                                  <span><i></i>已关注</span>
+                              </a>
+                            {% endif %}
+                            
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="starLists third">
+            <div class="m-container rel">
+                <div class="favTxt rel">
+                    <h3>最受欢迎帖子</h3>
+                    <div class="subText">财友们最爱看的帖子，一定有干货吧</div>
+                    <a class="m-divider rel favT" href="/app/thread?tid={{ data.normal3Tid }}">
+                        <div class="imgWrap">
+                            <img src="{{ data.normal3Image }}" class="responsive">
+                        </div>
+                        <div class="desc-body">
+                            <p class="f12 g0">作者：{{ data.normal3UserName }}</p>
+                            <p class="f14 desc red">{{ data.normal3Title }}</p>
+                            <button class="btn btn-block btn-follow">去看看</button>
+                        </div>
+                    </a>
+                </div>
+                <div class="bg3"></div>
+            </div>
+        </div>
+        
+        <div class="starLists fourth">
+            <div class="m-container">
+                <h3>{{ data.specialRewardName }}</h3>
+                <div class="subText">{{ data.specialRewardIntroduce }}</div>
+                <ul class="m-divider rel">
+                    {% for item in data.specialUserList %}
+                        <li class="starItem">
+                            <a href="{{item.homePageUrl}}" class="db">
+                                <span class="avatarWrap rel">
+                                    <img src="{{item.headImgUrl}}" class="responsive">
+                                    <span class="hot"></span>
+                                </span>
+                                <p class="nickname">{{item.nickName}}</p>
+                            </a>
+                            {% if item.follow %}
+                              <a href="" class="btn btn-follow js-follow isFollowed" uid={{ item.uid }}>
+                                  <span>+&nbsp;关注</span>
+                                  <span><i></i>已关注</span>
+                              </a>
+                            {% else %}
+                              <a href="" class="btn  btn-follow js-follow" uid={{ item.uid }}>
+                                  <span>+&nbsp;关注</span>
+                                  <span><i></i>已关注</span>
+                              </a>
+                            {% endif %}
+                            
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>    
+
+
+        <div class="starLists fifth">
+            <div class="m-container">
+                <h3>送你一份大礼</h3>
+                <div class="m-divider rel present">
+                    <div class="imgWrap">
+                        <img src="./image/gift.png" class="responsive">
+                    </div>
+                    <div>
+                        {% for item in data.intros %}
+                            <p class="f12 g0">{{ item }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="starLists last">
+            <div class="m-container">
+                <p class="wux-divider"> <span> 活动规则 </span> </p>
+                <ol class="f12 g3">
+                    <li>1.活跃之星评选周期，以周为单位</li>
+                    <li>2.活跃之星名单由系统自动统计，不包含违规禁言、官方人员等账号</li>
+                    <li>3.每期的奖项和奖品会存在一定的差异，具体以每周公布为准</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <a href="{{ data.postUrl }}" class="btn btn-block">看看大家怎么说</a>
+    </div>
+
+</div>
+</body>
+</html>

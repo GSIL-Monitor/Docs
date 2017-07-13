@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    {% set pageTitle = '帖子详情' %}
+    {% include "../partial/header.html" %}
+</head>
+<body>
+
+{# 版块或标签 #}
+{% if post.tag and not isWeibo %}
+    <a data-stat="threaddetail_tag" class="post-forum" href="/app/group?tagId={{ post.tag.id }}&popup=1&need_zinfo=1">
+        <div class="prefix">来自</div>
+        <div class="name">{{ post.tag.name }}</div>
+        <div class="icon icon-arrow"></div>
+    </a>
+{% elif post.forum and not isWeibo %}
+    <a data-stat="threaddetail_tag" class="post-forum" href="/app/group?tagId={{ post.forum.fid }}&popup=1&need_zinfo=1&navTitle={{ post.forum.name }}">
+        <div class="prefix">来自</div>
+        <div class="name">{{ post.forum.name }}</div>
+        <div class="icon icon-arrow"></div>
+    </a>
+{% endif %}
+<div class="winter-lottery hide"></div>
+{# 帖子标题 #}
+{% if not isWeibo and post.subject %}
+    <h1 class="post-title">{{ post.subject }}</h1>
+{% endif %}
+
+{# 作者信息 #}
+<div class="m-profile">
+    <div class="info">
+        <a data-stat="threaddetail_author_userinfo" class="author" href="/m/profile?uid={{ post.author.uid }}&popup=1&need_zinfo=1">
+            <div class="avatar" style="background-image: url({{ post.author.headImgUrl }});">
+                {% if post.author.verifyUrl %}
+                <i class="icon verify" style="background-image:url({{ post.author.verifyUrl }});"></i>
+                {% endif %}
+            </div>
+            <div class="name">{{ post.author.nickName }}</div>
+        </a>
+        <div class="time">{{ post.postTime }}</div>
+    </div>
+</div>
+
+{# 帖子内容 #}
+<div id="js-post" class="m-post {{ 'post-overflow' if singleReply }}">
+    <div class="post-content">{{ post.message | safe }}</div>
+
+    {% if singleReply %}
+    <div class="js-more-content more-content"></div>
+    {% endif %}
+   
+    {% if post.vote %}
+    <div class="preload" id="vote-area-container">
+        <div class="vote-area preload-container" id="vote-area">      
+        </div>
+    </div>
+    {% endif %}
+
+    {% if post.reprint == 1 %}
+    <div class="copy-right">未经允许，禁止转载</div>
+    {% endif %}
+</div>
+
+
+{# 点赞&收藏 #}
+<div class="m-post-handle wux-1px-b">
+    <div class="handle-row" id="js-handle-wrapper">
+        <a class="btn outlined btn-primary wux-1px-radius wux-center js-btn" :class="{'active':like}" href="javascript:;" type="like">
+            <em class="iconWrap rel">
+                <i class="icon icon-zan zan"></i>
+            </em>
+            <em class="vm zan_text" v-if='!!like' v-cloak>已赞</em>
+            <em v-cloak class="vm zan_text" v-else>赞</em>
+        </a>
+        <a class="btn outlined btn-primary wux-1px-radius wux-center js-btn" :class="{'active':fav}" href="javascript:;" type="fav">
+            <em class="iconWrap rel">
+                <i class="icon icon-favor"></i>
+            </em>
+            <em class="vm fav_text" v-if='!!fav' v-cloak>已收藏</em>
+            <em class="vm fav_text" v-else  v-cloak>收藏</em>
+        </a>
+    </div>
+    <div class="post-fav-row">
+        {% for item in likeList %}
+        <span class="imgWrap wux-1px-radius" style="background-image:url({{ item.avatarUrl }})">
+        </span>
+        {% endfor %}
+    </div>
+
+    <div class="favCountRow" v-if='likes > 0' v-cloak>
+        <em v-text="likes">{{ stats.likes }}</em>人点赞
+    </div>
+</div>
+
+
+
+{# 作者详细信息 #}
+{% if not singleReply %}
+
+<div class="m-profile-wrapper">
+    <div class="m-profile-detail">
+        {% set author = post.author %}
+            <a data-stat="threaddetail_author_userinfo" class="author" href="/m/profile?uid={{ author.uid }}&popup=1&need_zinfo=1&navTitle=个人主页">
+                <div class="avatar lazy" data-src="{{ author.headImgUrl }}">
+                    {% if author.verifyUrl %}
+                    <i class="icon verify lazy" data-src="{{ author.verifyUrl }}"></i>
+                    {% endif %}
+                </div>
+                <div class="info">
+                    <div class="name">{{ author.nickName }}</div>
+                    <div class="stat">
+                        <span class="space">{{ '粉丝: ' + author.fansCount if author.fansCount > 0 }}</span>
+                        {{ '发帖: ' + author.postCount }}
+                    </div>
+                </div>
+            </a>
+        {% if not isSelf %}
+            <div data-stat="threaddetail_follow" class="js-follow btn-follow {{ 'followed' if post.follow  }}" data-uid="{{ post.author.uid }}">
+                
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- 钱堂sdk导航 -->
+    {% if sdk and (sdk.open == 1) %}
+        <a class="sdk-content db" href="https://site.wacai.com/page/2030?popup=1&need_zinfo=1">
+            <div class="sdk-header imgWrap">
+                <img src="../../common/img/wacai-bbs-logo.png">
+            </div>
+            <div class="sdk-body">
+                <h3>钱堂社区</h3>
+                <p>{{ sdk.content }}</p>
+            </div>
+            <div class="sdk-footer">
+                <div class="post-r-text">我要加入</div>
+            </div>
+        </a>
+    {% endif %}
+</div>
+{% endif %}
+<div class="tag-list" id="J_tagList"></div>
+{% import "./tpl/reply.html" as reply %}
+
+<div class="m-reply">
+    <div id="js-reply-sum" class="reply-sum">财友回复&nbsp;{% if stats.replies > 0 %}({{ stats.replies }}){% endif %}
+   </div>
+
+    {% if hotReplies.length > 0 %}
+    <div id="js-hot-reply" class="hot-reply reply-list {{ 'list-hidden' if singleReply }}">
+        {% for item in hotReplies %}
+        {{ reply.gen(item) }}
+        {% if not loop.last %}
+        <div class="line"></div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div id="js-normal-reply" class="normal-reply reply-list">
+        {% if stats.replies == 0 %}
+            <div class="empty-reply">
+                <i class="icon icon-sofa"></i>沙发空缺中, 求回复
+            </div>
+        {% else %}
+        {% if not singleReply %}
+          <div class="js-spinner icon-spinner"></div>
+        {% endif %}
+        {% endif %}
+    </div>
+
+    {% if singleReply %}
+        <div class="m-single-reply">
+            <div id="js-single-reply" class="single-reply reply-list">
+                {{ reply.gen(singleReply) }}
+            </div>
+            <div class="js-load-more load-more">查看更多评论</div>
+        </div>
+    {% endif %}
+</div>
+
+<div id="js-more-menu" class="m-more-menu more-menu-hide"></div>
+<script>
+    window.__INIT_DATA__ = {{ INIT_STATE | dump | safe }}
+</script>
+</body>
+</html>

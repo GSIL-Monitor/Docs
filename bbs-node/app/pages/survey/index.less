@@ -1,0 +1,168 @@
+@import "~common/styles/index";
+@import "~common/styles/v2/variable";
+@import '~components/weui/widget/weui_cell/weui_cell_global';
+@import '~components/weui/widget/weui_cell/weui_check';
+@import "~common/styles/v2/index";
+@import "~common/styles/1px";
+@import "~common/styles/wux";
+
+.pe{
+    pointer-events: none;
+}
+
+.navItem{
+    width: 1.2rem;
+    height: 1.2rem;
+    position: relative;
+    &:before,&:after{
+        content:'';
+        position: absolute;
+        border-radius: 50%;
+        transition: all 0.5s;
+        transition-timing-function: cubic-bezier(0.2,1,0.3,1);
+    }
+    &:before{
+        width: 0.8rem;
+        height: 0.8rem;
+        left: 0.2rem;
+        top:0.2rem;
+        background-color: #E6E7E9;
+        
+    }
+    &:after{
+       width:100%;
+       height: 100%;
+       transform: scale3d(0.35,0.35,1);
+       opacity: 0;
+       left:0;
+       top:0;
+    }
+    &.active{
+        &:before{
+            background-color: @primaryColor;
+            transform: scale3d(0.6,0.6,1);
+        }
+        &:after{
+            opacity: 1;
+            box-shadow: inset 0 0 0 1px @primaryColor;
+            transform:scale3d(1,1,1);
+        }
+    }
+}
+
+.indicator{
+  .divider{
+    height: 1px;
+    width: 2.8rem;
+    margin: 0 1rem;
+    background-color: #E6E7E9;
+    transition: all 0.5s;
+    transition-timing-function: cubic-bezier(0.2,1,0.3,1);
+    &.active{
+        background-color: @primaryColor;
+    }
+  }  
+}
+
+.cardContainer{
+    .clearfix();
+    color:@globalTextColor2;
+    .card{
+        float:left;
+    }
+}
+
+.weui_check{
+    &:after{
+        top:2px;
+        left: 5px;
+    }
+}
+
+.weui_check:checked {
+    background-color: '#fff';
+    border-color: @primaryColor;
+}
+
+.weui_check:checked {
+    &:after{
+        border-color: @primaryColor;
+    }
+}
+
+.indicTxt{
+    margin-top: 1.2rem;
+    font-size: 2rem;
+    color:@globalTextColor2;
+    line-height: 2.8rem;
+    em{
+        color:#CBCED5;
+    }
+}
+
+.banner{
+    margin-bottom: 3.2rem;
+}
+
+.footerTxt{
+    margin-top: 1.2rem;
+    margin-left: 3.6rem;
+    color: @globalTextColor4;
+    font-size: 1.3rem;
+    p{
+        line-height: 1.8rem;
+    }
+}
+
+.surveyBtnRow{
+    margin: 2rem 1.6rem;
+}
+
+.weui_cell.active{
+    .weui_cell_primary{
+        color: @primaryColor;
+    }
+}
+
+.weui_cell{
+    &:active {
+        background-color: #FFFFFF !important;
+    }
+    padding: 15px 15px 15px 0px;
+    .weui_check {
+        position: relative;
+        left: auto;
+         width: 1.6rem;
+        height: 1.6rem;
+    }
+    &:after{
+        border-bottom: 0;
+    }
+   &:before {
+   left: 0px;
+    }
+}
+
+.hidden{
+    display: none;
+}
+
+
+.weui_cell{
+
+    .weui_check {
+        
+       
+    }
+
+}
+.weui_cells {
+    padding-left: 3.6rem;
+    .usn();
+    &:before {
+        border-top: 0px;
+    }
+    &:after {
+        border-bottom: 0px;
+    }
+}

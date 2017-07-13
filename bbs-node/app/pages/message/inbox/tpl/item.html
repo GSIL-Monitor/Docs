@@ -1,0 +1,22 @@
+{% for item in messages %}
+{% if not item.hideTime and item.time != messages[loop.index0  - 1].time %}
+<div class="time">{{ item.time }}</div>
+{% endif %}
+<div class="item item-{{ 'right' if item.uid == currentUid else 'left' }}">
+    <a class="avatar lazy" data-src="{{ users[item.uid].userHead }}" href="/m/profile?need_zinfo=1&popup=1&uid={{ item.uid }}&navTitle=个人主页">
+
+        {% if item.verify %}
+        <i class="icon verify"></i>
+        {% endif %}
+    </a>
+    <div class="content">
+        <p class="message">
+            {% if users[targetUid].publicUser %}
+            {{ item.message | safe }}
+            {% else %}
+            {{ item.message | safe }}
+            {% endif %}
+        </p>
+    </div>
+</div>
+{% endfor %}

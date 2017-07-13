@@ -1,0 +1,6 @@
+{% if data.picture %}
+    <div class="packet" id="redPacket" >
+        <a class="packetPic" href="{{ data.url}}" style="background-image: url({{ data.picture }});"></a>
+        <i class="close" id="hidePacket"></i>
+    </div>
+{% endif %}

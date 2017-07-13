@@ -1,0 +1,61 @@
+@import "~common/base/foundation";
+
+.m-form {
+    .nickname {
+        display: block;
+        width: 100%;
+        height: 4.9rem;
+        margin-top: 1.5rem;
+        margin-bottom: .5rem;
+        padding-left: 2rem;
+        padding-right: 1.5rem;
+        color: #333;
+        font-size: 1.6rem;
+        border-width: 1px 0 1px 0;
+        .border-image();
+        appearence: none;
+        outline: none;
+    }
+
+    .label {
+        display: block;
+        height: 1.45 * 1.2 * 2rem;
+        margin-left: 2rem;
+        padding-right: 1.5rem;
+        color: @gray;
+        font-size: 1.2rem;
+
+        &.error {
+            display: none;
+            padding-left: 1.7rem;
+            color: #f04a3a;
+            background: url(./img/error.png?base64) left .2rem no-repeat;
+            background-size: 1.2rem;
+        }
+    }
+
+    .action {
+        margin: 1.2rem 1.5rem;
+    }
+
+    .btn-submit {
+        display: block;
+        width: 100%;
+        padding: 1rem 0;
+        background-color: #fff;
+        text-align: center;
+        font-size: 1.7rem;
+        color: #fb7b14;
+        border-radius: .4rem;
+        border: 1px solid currentColor;
+        appearance: none;
+        outline: none;
+
+        &.disabled {
+            color: #b9bdc1;
+            pointer-events: none;
+            border-color: #ebebeb;
+            background-color: #ebebeb;
+        }
+    }
+}
